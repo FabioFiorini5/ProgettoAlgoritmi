@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/blasko/CLionProjects/alqwaritzmi/InputMatrix.h
+
+/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV6.cpp
+queue
+-
+iostream
+-
+MBaseSolverV6.h
+/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV6.h
+vector
+-
+iterator
+-
+
+/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV6.h
+MinimumHittingSetSolver.h
+/Users/blasko/CLionProjects/alqwaritzmi/MinimumHittingSetSolver.h
+vector
+-
+
+/Users/blasko/CLionProjects/alqwaritzmi/MinimumHittingSetSolver.h
+InputMatrix.h
+/Users/blasko/CLionProjects/alqwaritzmi/InputMatrix.h
+

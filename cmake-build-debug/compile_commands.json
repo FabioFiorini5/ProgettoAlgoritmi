@@ -1,0 +1,42 @@
+[
+{
+  "directory": "/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++    -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk   -Wall -Wextra -Wvla -v -O3 -std=gnu++2a -o CMakeFiles/alqwaritzmi.dir/main.cpp.o -c /Users/blasko/CLionProjects/alqwaritzmi/main.cpp",
+  "file": "/Users/blasko/CLionProjects/alqwaritzmi/main.cpp"
+},
+{
+  "directory": "/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++    -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk   -Wall -Wextra -Wvla -v -O3 -std=gnu++2a -o CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.o -c /Users/blasko/CLionProjects/alqwaritzmi/InputMatrix.cpp",
+  "file": "/Users/blasko/CLionProjects/alqwaritzmi/InputMatrix.cpp"
+},
+{
+  "directory": "/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++    -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk   -Wall -Wextra -Wvla -v -O3 -std=gnu++2a -o CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.o -c /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolver.cpp",
+  "file": "/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolver.cpp"
+},
+{
+  "directory": "/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++    -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk   -Wall -Wextra -Wvla -v -O3 -std=gnu++2a -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.o -c /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV2.cpp",
+  "file": "/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV2.cpp"
+},
+{
+  "directory": "/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++    -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk   -Wall -Wextra -Wvla -v -O3 -std=gnu++2a -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.o -c /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV3.cpp",
+  "file": "/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV3.cpp"
+},
+{
+  "directory": "/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++    -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk   -Wall -Wextra -Wvla -v -O3 -std=gnu++2a -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.o -c /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV4.cpp",
+  "file": "/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV4.cpp"
+},
+{
+  "directory": "/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++    -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk   -Wall -Wextra -Wvla -v -O3 -std=gnu++2a -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.o -c /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV5.cpp",
+  "file": "/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV5.cpp"
+},
+{
+  "directory": "/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++    -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk   -Wall -Wextra -Wvla -v -O3 -std=gnu++2a -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.o -c /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV6.cpp",
+  "file": "/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV6.cpp"
+}
+]
