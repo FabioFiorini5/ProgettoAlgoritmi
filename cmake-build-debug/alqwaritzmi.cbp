@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug"/>
+				<Option working_dir="/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug"/>
+				<Option working_dir="/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug"/>
+				<Option working_dir="/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="alqwaritzmi">
-				<Option output="/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/alqwaritzmi" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug"/>
+				<Option output="/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/alqwaritzmi" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -52,15 +52,15 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 alqwaritzmi"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 alqwaritzmi"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="alqwaritzmi/fast">
-				<Option output="/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/alqwaritzmi" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug"/>
+				<Option output="/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/alqwaritzmi" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -73,62 +73,62 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 alqwaritzmi/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 alqwaritzmi/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/InputMatrix.cpp">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/InputMatrix.cpp">
 			<Option target="alqwaritzmi"/>
 		</Unit>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/InputMatrix.h">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/InputMatrix.h">
 			<Option target="alqwaritzmi"/>
 		</Unit>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolver.cpp">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolver.cpp">
 			<Option target="alqwaritzmi"/>
 		</Unit>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolver.h">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolver.h">
 			<Option target="alqwaritzmi"/>
 		</Unit>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV2.cpp">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV2.cpp">
 			<Option target="alqwaritzmi"/>
 		</Unit>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV2.h">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV2.h">
 			<Option target="alqwaritzmi"/>
 		</Unit>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV3.cpp">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV3.cpp">
 			<Option target="alqwaritzmi"/>
 		</Unit>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV3.h">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV3.h">
 			<Option target="alqwaritzmi"/>
 		</Unit>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV4.cpp">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV4.cpp">
 			<Option target="alqwaritzmi"/>
 		</Unit>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV4.h">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV4.h">
 			<Option target="alqwaritzmi"/>
 		</Unit>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV5.cpp">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV5.cpp">
 			<Option target="alqwaritzmi"/>
 		</Unit>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV5.h">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV5.h">
 			<Option target="alqwaritzmi"/>
 		</Unit>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV6.cpp">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV6.cpp">
 			<Option target="alqwaritzmi"/>
 		</Unit>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV6.h">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV6.h">
 			<Option target="alqwaritzmi"/>
 		</Unit>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/MinimumHittingSetSolver.h">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/MinimumHittingSetSolver.h">
 			<Option target="alqwaritzmi"/>
 		</Unit>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/main.cpp">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/main.cpp">
 			<Option target="alqwaritzmi"/>
 		</Unit>
-		<Unit filename="/Users/blasko/CLionProjects/alqwaritzmi/CMakeLists.txt">
+		<Unit filename="/Users/blasko/CLionProjects/ProgettoAlgoritmi/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

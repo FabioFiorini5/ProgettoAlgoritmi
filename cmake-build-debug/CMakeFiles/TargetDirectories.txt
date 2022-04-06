@@ -1,3 +1,3 @@
-/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles/alqwaritzmi.dir
+/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles/alg_str_dati.dir

@@ -68,10 +68,10 @@ RM = "/Users/blasko/Library/Application Support/JetBrains/Toolbox/apps/CLion-ARM
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/blasko/CLionProjects/alqwaritzmi
+CMAKE_SOURCE_DIR = /Users/blasko/CLionProjects/ProgettoAlgoritmi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles /Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles /Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -131,17 +131,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named alqwaritzmi
+# Target rules for targets named alg_str_dati
 
 # Build rule for target.
-alqwaritzmi: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 alqwaritzmi
-.PHONY : alqwaritzmi
+alg_str_dati: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 alg_str_dati
+.PHONY : alg_str_dati
 
 # fast build rule for target.
-alqwaritzmi/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/build
-.PHONY : alqwaritzmi/fast
+alg_str_dati/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/build
+.PHONY : alg_str_dati/fast
 
 InputMatrix.o: InputMatrix.cpp.o
 
@@ -149,7 +149,7 @@ InputMatrix.o: InputMatrix.cpp.o
 
 # target to build an object file
 InputMatrix.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/InputMatrix.cpp.o
 .PHONY : InputMatrix.cpp.o
 
 InputMatrix.i: InputMatrix.cpp.i
@@ -158,7 +158,7 @@ InputMatrix.i: InputMatrix.cpp.i
 
 # target to preprocess a source file
 InputMatrix.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/InputMatrix.cpp.i
 .PHONY : InputMatrix.cpp.i
 
 InputMatrix.s: InputMatrix.cpp.s
@@ -167,7 +167,7 @@ InputMatrix.s: InputMatrix.cpp.s
 
 # target to generate assembly for a file
 InputMatrix.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/InputMatrix.cpp.s
 .PHONY : InputMatrix.cpp.s
 
 MBaseSolver.o: MBaseSolver.cpp.o
@@ -176,7 +176,7 @@ MBaseSolver.o: MBaseSolver.cpp.o
 
 # target to build an object file
 MBaseSolver.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolver.cpp.o
 .PHONY : MBaseSolver.cpp.o
 
 MBaseSolver.i: MBaseSolver.cpp.i
@@ -185,7 +185,7 @@ MBaseSolver.i: MBaseSolver.cpp.i
 
 # target to preprocess a source file
 MBaseSolver.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolver.cpp.i
 .PHONY : MBaseSolver.cpp.i
 
 MBaseSolver.s: MBaseSolver.cpp.s
@@ -194,7 +194,7 @@ MBaseSolver.s: MBaseSolver.cpp.s
 
 # target to generate assembly for a file
 MBaseSolver.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolver.cpp.s
 .PHONY : MBaseSolver.cpp.s
 
 MBaseSolverV2.o: MBaseSolverV2.cpp.o
@@ -203,7 +203,7 @@ MBaseSolverV2.o: MBaseSolverV2.cpp.o
 
 # target to build an object file
 MBaseSolverV2.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolverV2.cpp.o
 .PHONY : MBaseSolverV2.cpp.o
 
 MBaseSolverV2.i: MBaseSolverV2.cpp.i
@@ -212,7 +212,7 @@ MBaseSolverV2.i: MBaseSolverV2.cpp.i
 
 # target to preprocess a source file
 MBaseSolverV2.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolverV2.cpp.i
 .PHONY : MBaseSolverV2.cpp.i
 
 MBaseSolverV2.s: MBaseSolverV2.cpp.s
@@ -221,7 +221,7 @@ MBaseSolverV2.s: MBaseSolverV2.cpp.s
 
 # target to generate assembly for a file
 MBaseSolverV2.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolverV2.cpp.s
 .PHONY : MBaseSolverV2.cpp.s
 
 MBaseSolverV3.o: MBaseSolverV3.cpp.o
@@ -230,7 +230,7 @@ MBaseSolverV3.o: MBaseSolverV3.cpp.o
 
 # target to build an object file
 MBaseSolverV3.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolverV3.cpp.o
 .PHONY : MBaseSolverV3.cpp.o
 
 MBaseSolverV3.i: MBaseSolverV3.cpp.i
@@ -239,7 +239,7 @@ MBaseSolverV3.i: MBaseSolverV3.cpp.i
 
 # target to preprocess a source file
 MBaseSolverV3.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolverV3.cpp.i
 .PHONY : MBaseSolverV3.cpp.i
 
 MBaseSolverV3.s: MBaseSolverV3.cpp.s
@@ -248,7 +248,7 @@ MBaseSolverV3.s: MBaseSolverV3.cpp.s
 
 # target to generate assembly for a file
 MBaseSolverV3.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolverV3.cpp.s
 .PHONY : MBaseSolverV3.cpp.s
 
 MBaseSolverV4.o: MBaseSolverV4.cpp.o
@@ -257,7 +257,7 @@ MBaseSolverV4.o: MBaseSolverV4.cpp.o
 
 # target to build an object file
 MBaseSolverV4.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolverV4.cpp.o
 .PHONY : MBaseSolverV4.cpp.o
 
 MBaseSolverV4.i: MBaseSolverV4.cpp.i
@@ -266,7 +266,7 @@ MBaseSolverV4.i: MBaseSolverV4.cpp.i
 
 # target to preprocess a source file
 MBaseSolverV4.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolverV4.cpp.i
 .PHONY : MBaseSolverV4.cpp.i
 
 MBaseSolverV4.s: MBaseSolverV4.cpp.s
@@ -275,7 +275,7 @@ MBaseSolverV4.s: MBaseSolverV4.cpp.s
 
 # target to generate assembly for a file
 MBaseSolverV4.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolverV4.cpp.s
 .PHONY : MBaseSolverV4.cpp.s
 
 MBaseSolverV5.o: MBaseSolverV5.cpp.o
@@ -284,7 +284,7 @@ MBaseSolverV5.o: MBaseSolverV5.cpp.o
 
 # target to build an object file
 MBaseSolverV5.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolverV5.cpp.o
 .PHONY : MBaseSolverV5.cpp.o
 
 MBaseSolverV5.i: MBaseSolverV5.cpp.i
@@ -293,7 +293,7 @@ MBaseSolverV5.i: MBaseSolverV5.cpp.i
 
 # target to preprocess a source file
 MBaseSolverV5.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolverV5.cpp.i
 .PHONY : MBaseSolverV5.cpp.i
 
 MBaseSolverV5.s: MBaseSolverV5.cpp.s
@@ -302,7 +302,7 @@ MBaseSolverV5.s: MBaseSolverV5.cpp.s
 
 # target to generate assembly for a file
 MBaseSolverV5.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolverV5.cpp.s
 .PHONY : MBaseSolverV5.cpp.s
 
 MBaseSolverV6.o: MBaseSolverV6.cpp.o
@@ -311,7 +311,7 @@ MBaseSolverV6.o: MBaseSolverV6.cpp.o
 
 # target to build an object file
 MBaseSolverV6.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolverV6.cpp.o
 .PHONY : MBaseSolverV6.cpp.o
 
 MBaseSolverV6.i: MBaseSolverV6.cpp.i
@@ -320,7 +320,7 @@ MBaseSolverV6.i: MBaseSolverV6.cpp.i
 
 # target to preprocess a source file
 MBaseSolverV6.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolverV6.cpp.i
 .PHONY : MBaseSolverV6.cpp.i
 
 MBaseSolverV6.s: MBaseSolverV6.cpp.s
@@ -329,7 +329,7 @@ MBaseSolverV6.s: MBaseSolverV6.cpp.s
 
 # target to generate assembly for a file
 MBaseSolverV6.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/MBaseSolverV6.cpp.s
 .PHONY : MBaseSolverV6.cpp.s
 
 main.o: main.cpp.o
@@ -338,7 +338,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -347,7 +347,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -356,7 +356,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -367,7 +367,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... alqwaritzmi"
+	@echo "... alg_str_dati"
 	@echo "... InputMatrix.o"
 	@echo "... InputMatrix.i"
 	@echo "... InputMatrix.s"

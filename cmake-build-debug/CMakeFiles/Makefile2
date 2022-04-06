@@ -64,16 +64,16 @@ RM = "/Users/blasko/Library/Application Support/JetBrains/Toolbox/apps/CLion-ARM
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/blasko/CLionProjects/alqwaritzmi
+CMAKE_SOURCE_DIR = /Users/blasko/CLionProjects/ProgettoAlgoritmi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/alqwaritzmi.dir/all
+all: CMakeFiles/alg_str_dati.dir/all
 
 .PHONY : all
 
@@ -83,36 +83,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/alqwaritzmi.dir/clean
+clean: CMakeFiles/alg_str_dati.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/alqwaritzmi.dir
+# Target rules for target CMakeFiles/alg_str_dati.dir
 
 # All Build rule for target.
-CMakeFiles/alqwaritzmi.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target alqwaritzmi"
-.PHONY : CMakeFiles/alqwaritzmi.dir/all
+CMakeFiles/alg_str_dati.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target alg_str_dati"
+.PHONY : CMakeFiles/alg_str_dati.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/alqwaritzmi.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/alqwaritzmi.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/alqwaritzmi.dir/rule
+CMakeFiles/alg_str_dati.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles 9
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/alg_str_dati.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/alg_str_dati.dir/rule
 
 # Convenience name for target.
-alqwaritzmi: CMakeFiles/alqwaritzmi.dir/rule
+alg_str_dati: CMakeFiles/alg_str_dati.dir/rule
 
-.PHONY : alqwaritzmi
+.PHONY : alg_str_dati
 
 # clean rule for target.
-CMakeFiles/alqwaritzmi.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/alqwaritzmi.dir/build.make CMakeFiles/alqwaritzmi.dir/clean
-.PHONY : CMakeFiles/alqwaritzmi.dir/clean
+CMakeFiles/alg_str_dati.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/alg_str_dati.dir/build.make CMakeFiles/alg_str_dati.dir/clean
+.PHONY : CMakeFiles/alg_str_dati.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

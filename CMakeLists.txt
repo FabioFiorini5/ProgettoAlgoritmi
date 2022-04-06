@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.17)
-project(alqwaritzmi)
+project(alg_str_dati)
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -7,7 +7,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_compile_options(-Wall -Wextra -Wvla -v -O3)
 
-add_executable(alqwaritzmi main.cpp
+add_executable(alg_str_dati main.cpp
         MinimumHittingSetSolver.h
         InputMatrix.cpp
         InputMatrix.h

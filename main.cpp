@@ -12,12 +12,20 @@
 #define LOG_DEBUG
 #endif
 
-int main() {
+int main(int argc, char *argv[]) {
+
     LOG_DEBUG("start\n");
 
     MBaseSolverV6 solver;
-    InputMatrix inputMatrix("/Users/blasko/CLionProjects/alqwaritzmi/benchmarks/c7552.325.matrix");
-    solver.solve(inputMatrix);
+    if(argc==0){//base test
+        InputMatrix inputMatrix;
+
+        solver.solve(inputMatrix);
+    }
+    else{
+        InputMatrix inputMatrix(argv[1]);
+        solver.solve(inputMatrix);
+    }
 
     LOG_DEBUG("end\n");
     return 0;

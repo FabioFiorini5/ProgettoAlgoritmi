@@ -63,10 +63,10 @@ RM = "/Users/blasko/Library/Application Support/JetBrains/Toolbox/apps/CLion-ARM
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/blasko/CLionProjects/alqwaritzmi
+CMAKE_SOURCE_DIR = /Users/blasko/CLionProjects/ProgettoAlgoritmi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/alqwaritzmi.dir/depend.make
@@ -79,107 +79,107 @@ include CMakeFiles/alqwaritzmi.dir/flags.make
 
 CMakeFiles/alqwaritzmi.dir/main.cpp.o: CMakeFiles/alqwaritzmi.dir/flags.make
 CMakeFiles/alqwaritzmi.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/alqwaritzmi.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/alqwaritzmi.dir/main.cpp.o -c /Users/blasko/CLionProjects/alqwaritzmi/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/alqwaritzmi.dir/main.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/alqwaritzmi.dir/main.cpp.o -c /Users/blasko/CLionProjects/ProgettoAlgoritmi/main.cpp
 
 CMakeFiles/alqwaritzmi.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/alqwaritzmi.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blasko/CLionProjects/alqwaritzmi/main.cpp > CMakeFiles/alqwaritzmi.dir/main.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blasko/CLionProjects/ProgettoAlgoritmi/main.cpp > CMakeFiles/alqwaritzmi.dir/main.cpp.i
 
 CMakeFiles/alqwaritzmi.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/alqwaritzmi.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blasko/CLionProjects/alqwaritzmi/main.cpp -o CMakeFiles/alqwaritzmi.dir/main.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blasko/CLionProjects/ProgettoAlgoritmi/main.cpp -o CMakeFiles/alqwaritzmi.dir/main.cpp.s
 
 CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.o: CMakeFiles/alqwaritzmi.dir/flags.make
 CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.o: ../InputMatrix.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.o -c /Users/blasko/CLionProjects/alqwaritzmi/InputMatrix.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.o -c /Users/blasko/CLionProjects/ProgettoAlgoritmi/InputMatrix.cpp
 
 CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blasko/CLionProjects/alqwaritzmi/InputMatrix.cpp > CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blasko/CLionProjects/ProgettoAlgoritmi/InputMatrix.cpp > CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.i
 
 CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blasko/CLionProjects/alqwaritzmi/InputMatrix.cpp -o CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blasko/CLionProjects/ProgettoAlgoritmi/InputMatrix.cpp -o CMakeFiles/alqwaritzmi.dir/InputMatrix.cpp.s
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.o: CMakeFiles/alqwaritzmi.dir/flags.make
 CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.o: ../MBaseSolver.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.o -c /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolver.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.o -c /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolver.cpp
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolver.cpp > CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolver.cpp > CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.i
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolver.cpp -o CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolver.cpp -o CMakeFiles/alqwaritzmi.dir/MBaseSolver.cpp.s
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.o: CMakeFiles/alqwaritzmi.dir/flags.make
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.o: ../MBaseSolverV2.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.o -c /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.o -c /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV2.cpp
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV2.cpp > CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV2.cpp > CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.i
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV2.cpp -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV2.cpp -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV2.cpp.s
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.o: CMakeFiles/alqwaritzmi.dir/flags.make
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.o: ../MBaseSolverV3.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.o -c /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV3.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.o -c /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV3.cpp
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV3.cpp > CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV3.cpp > CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.i
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV3.cpp -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV3.cpp -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV3.cpp.s
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.o: CMakeFiles/alqwaritzmi.dir/flags.make
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.o: ../MBaseSolverV4.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.o -c /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV4.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.o -c /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV4.cpp
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV4.cpp > CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV4.cpp > CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.i
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV4.cpp -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV4.cpp -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV4.cpp.s
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.o: CMakeFiles/alqwaritzmi.dir/flags.make
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.o: ../MBaseSolverV5.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.o -c /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV5.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.o -c /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV5.cpp
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV5.cpp > CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV5.cpp > CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.i
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV5.cpp -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV5.cpp -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.s
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.o: CMakeFiles/alqwaritzmi.dir/flags.make
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.o: ../MBaseSolverV6.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.o -c /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV6.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.o -c /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV6.cpp
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV6.cpp > CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV6.cpp > CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.i
 
 CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blasko/CLionProjects/alqwaritzmi/MBaseSolverV6.cpp -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV6.cpp -o CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.s
 
 # Object files for target alqwaritzmi
 alqwaritzmi_OBJECTS = \
@@ -205,7 +205,7 @@ alqwaritzmi: CMakeFiles/alqwaritzmi.dir/MBaseSolverV5.cpp.o
 alqwaritzmi: CMakeFiles/alqwaritzmi.dir/MBaseSolverV6.cpp.o
 alqwaritzmi: CMakeFiles/alqwaritzmi.dir/build.make
 alqwaritzmi: CMakeFiles/alqwaritzmi.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable alqwaritzmi"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable alqwaritzmi"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/alqwaritzmi.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -218,6 +218,6 @@ CMakeFiles/alqwaritzmi.dir/clean:
 .PHONY : CMakeFiles/alqwaritzmi.dir/clean
 
 CMakeFiles/alqwaritzmi.dir/depend:
-	cd /Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/blasko/CLionProjects/alqwaritzmi /Users/blasko/CLionProjects/alqwaritzmi /Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug /Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug /Users/blasko/CLionProjects/alqwaritzmi/cmake-build-debug/CMakeFiles/alqwaritzmi.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/blasko/CLionProjects/ProgettoAlgoritmi /Users/blasko/CLionProjects/ProgettoAlgoritmi /Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug /Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug /Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug/CMakeFiles/alqwaritzmi.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/alqwaritzmi.dir/depend
 
