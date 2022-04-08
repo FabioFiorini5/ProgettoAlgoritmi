@@ -6,21 +6,31 @@
 #include <iostream>
 #include "MBaseSolver.h"
 
+/**
+ * Main func
+ * @param input
+ */
 void MBaseSolver::solve(InputMatrix& input) {
     int size=input.getColumnLength();
-    auto emptySet=new bool[size]();
+    //pointer perché la coda così tiene all'interno i puntatori.
+    //ogni volta che viene fatto pop bisogna ricordarsi di eseguire il delete.
+    auto emptySet=new bool[size](); //new -> deve essere fatto il delete
     std::queue<bool*> queue;
     queue.push(emptySet);
+    // ciclo sulla coda, fino a quando non si svuota
     while(queue.front()!= nullptr){
         bool* current=queue.front();
         std::cerr<<"Current: "<<std::endl;
+        //elemento di test
         print(std::cerr, current, size);
+        //per ogni combinazione di colonna con l'elemento di test cicla
         for(int i=getSuccessor(getMax(current, size), size); i<size; i++) {
             auto candidate = generateCandidate(size, current, i);
 
             std::cerr<<"Candidate: "<<std::endl;
             print(std::cerr, candidate, size);
 
+            //la funzione check restituisce 1 se MHS, 0 se candidato
             int result= check(current, i, input);
             if(result==1&&i!=size-1)
                 print(std::cout, candidate, size);
@@ -28,6 +38,7 @@ void MBaseSolver::solve(InputMatrix& input) {
                 queue.push(candidate);
         }
         delete[] current;
+        //queue pop non restituisce l'elemento, quindi per ottenerlo si fa .front
         queue.pop();
     }
 }
@@ -41,8 +52,15 @@ void MBaseSolver::print(std::ostream& stream, const bool *pBoolean, int size) co
     stream<<std::endl;
 }
 
+/**
+ * genera la combinazione dell'array di booleani in esame con l'indice della colonna da aggiungere
+ * @param size
+ * @param father
+ * @param indexToAdd
+ * @return
+ */
 bool* MBaseSolver::generateCandidate(int size, const bool* father, int indexToAdd){
-    auto bitset= new bool[size];
+    auto bitset= new bool[size]; //new -> deve essere fatto delete
     for(int i=0; i<size; i++){
         bitset[i]=father[i]||i==indexToAdd;
     }
@@ -112,13 +130,21 @@ bool* MBaseSolver::getRepresentativeVector(const bool *pBoolean, InputMatrix &in
 }
 
 bool* MBaseSolver::getRepresentativeVector(int index, InputMatrix &inputMatrix) {
-    auto bitset=new bool[inputMatrix.getColumnLength()]();
+    auto bitset=new bool[inputMatrix.getColumnLength()](); //new -> va fatto il delete
     bitset[index]=true;
     auto toReturn=getRepresentativeVector(bitset, inputMatrix);
-    delete[] bitset;
+    delete[] bitset; //delete
     return toReturn;
 }
-
+/**
+ * truth map, fa una verifica dei vari casi che  possono verificarsi
+ * Al momento non ricordo il perché abbia fatto questa logica, ma va a rendere il caso di test valido.
+ * @param contains0
+ * @param contains1
+ * @param contains2
+ * @param contains3
+ * @return
+ */
 int MBaseSolver::evaluateTruthMap(bool contains0, bool contains1, bool contains2, bool contains3) const {
     if(contains0&&contains1&&contains2)
         return 0;

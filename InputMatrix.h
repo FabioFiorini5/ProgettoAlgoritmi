@@ -11,18 +11,25 @@ class InputMatrix {
 public:
     explicit InputMatrix(const std::string& path);
 
-    int getColumnLength();
+    [[nodiscard]] int getColumnLength() const;
 
     InputMatrix();
 
-    int getRowLength();
+    [[nodiscard]] int getRowLength() const;
 
-    bool getValueAt(int row, int column);
+    [[nodiscard]] bool getValueAt(int row, int column) const;
 
 private:
+    void setColumnLength(int val){
+        this->columnLength=val;
+    }
+    void setRowLength(int val){
+        this->rowLength=val;
+    }
+
     bool** matrix;
-    int columnLength;
-    int rowLength;
+    int columnLength=0;
+    int rowLength=0;
 };
 
 

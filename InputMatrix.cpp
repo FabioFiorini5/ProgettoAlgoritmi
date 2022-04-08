@@ -7,18 +7,43 @@
 #include <fstream>
 #include <iostream>
 
-int InputMatrix::getColumnLength() {
+/**
+ * Ritorna quanto è lunga una colonna, cioè il numero di righe
+ * @return integer
+ */
+
+int InputMatrix::getColumnLength() const{
     return columnLength;
 }
-/*
- *
- *  {B3,B4}, 1
- A1,A2,B4}, 2
+
+
+/**
+ * Restituisce la lunghezza di una riga, o il numero di colonne
+ * @return
+ */
+int InputMatrix::getRowLength() const{
+    return rowLength;
+}
+
+/**
+ * restituisce il valore di una cella
+ * @param row
+ * @param column
+ * @return bool
+ */
+bool InputMatrix::getValueAt(int row, int column) const {
+    return matrix[row][column];
+}
+
+/**
+ * Costruttore base per il caso di test
+ { {B3,B4},
+ A1,A2,B4},
  {A2,A5,B3,B4} }
  */
 InputMatrix::InputMatrix() {
-    columnLength=5;
-    rowLength=3;
+    setColumnLength(5);
+    setRowLength(3);
     matrix=new bool*[rowLength]();
 
     matrix[0]=new bool[columnLength]();
@@ -36,19 +61,26 @@ InputMatrix::InputMatrix() {
     matrix[2][4]=true;
 }
 
+/**
+ * Costruttore per un caso generico. Richiede il path del file di riferimento del caso.
+ * @param path std::string
+ */
 InputMatrix::InputMatrix(const std::string& path) {
     std::ifstream infile(path);
     std::string line;
+    int row=0;
+    int column=0;
     while (std::getline(infile, line))
     {
         if(line.starts_with(";;;")){
             continue;
         }
 
-        columnLength=(line.size()-1)/2;
-        rowLength++;
+        column=(int)(line.size()-1)/2;
+        row++;
     }
-    rowLength--;
+    setColumnLength(column);
+    setRowLength(row);
     matrix=new bool*[rowLength]();
     std::ifstream infile2(path);
     int rowCount=0;
@@ -57,6 +89,8 @@ InputMatrix::InputMatrix(const std::string& path) {
         if(line.starts_with(";;;")){
             continue;
         }
+        if(rowCount>=rowLength)
+            break;
         matrix[rowCount]=new bool[columnLength] ();
         for(int i=0; i<columnLength; i++){
             char c=line[i*2];
@@ -73,11 +107,3 @@ InputMatrix::InputMatrix(const std::string& path) {
     }
 }
 
-
-int InputMatrix::getRowLength() {
-    return rowLength;
-}
-
-bool InputMatrix::getValueAt(int row, int column) {
-    return matrix[row][column];
-}
