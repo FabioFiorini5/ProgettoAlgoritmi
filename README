@@ -1,1 +1,21 @@
 Repository per il progetto di Algoritmi e Strutture Dati
+
+
+Appunti:
+Il processo è di complessità esponenziale:
+ogni combinazione delle colonne viene testata, o scartata preventivamente.
+Il valore che può assumere una cella è 0 o 1, quindi sono da testare 2^numero colonne combinazioni differenti.
+Appurato ciò possiamo conteggiare il numero di cicli al secondo e comparare il tempo di esecuzione previsto.
+Se è accettabile (da definire la quantità di tempo accettabile) il processo può continuare, altrimenti viene posta fine alla sua esistenza.
+Questa scrematura massiva può funzionare dando in pasto all'eseguibile una cartella contenente i file .matrix
+Questo procedimento potrebbe andare bene anche in caso di implementazione di pre elaborazione.
+Il numero di cicli al secondo eseguiti dipende dalla dimensione del problema:
+più il problema è grande più è possibile il verificarsi di minimum hitting set e di esclusioni, che vanno a popolare una struttura dati.
+L'accesso alla struttura dati, per quanto possa avvenire in tempo lineare nei casi migliori,
+è comunque proporzionale alla grandezza della struttura dati, nel caso peggiore.
+
+Implementazioni future possibili:
+    lista di esclusione - all'inizio un set di bool array, per testarne il funzionamento, poi si può limare il tempo di
+accessso impostando come chiave la valorizzazione numerica della combinazione binaria.
+    pre-elaborazione
+    parallelizzazione con pattern producer consumer
