@@ -54,7 +54,7 @@ std::vector<bool> MBaseSolverV6::generateCandidate(const std::vector<bool>& fath
     return bitset;
 }
 
-int MBaseSolverV6::check(const std::vector<bool>& pBoolean, int toAdd, InputMatrix& inputMatrix) const{
+int MBaseSolverV6::check(const std::vector<bool>& pBoolean, int toAdd, const InputMatrix& inputMatrix) const{
     int size=inputMatrix.getRowLength();
     std::vector<bool> other=getRepresentativeVector(toAdd, inputMatrix);
     std::vector<char> unionVector(size);

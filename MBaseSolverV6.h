@@ -37,7 +37,7 @@ public:
 
 private:
 
-    int check(const std::vector<bool>& pBoolean, int matrix, InputMatrix& inputMatrix) const;
+    int check(const std::vector<bool>& pBoolean, int matrix, const InputMatrix& inputMatrix) const;
 
     [[nodiscard]] int getSuccessor(int val, int other) const;
 
