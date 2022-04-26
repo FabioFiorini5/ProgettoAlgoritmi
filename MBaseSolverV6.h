@@ -31,7 +31,7 @@ public:
         truthMap[15]=0;//1,1,1,1
     }
 
-    ~MBaseSolverV6()=default;
+    virtual ~MBaseSolverV6()=default;
 
     void solve(InputMatrix& input) override;
 
@@ -43,9 +43,9 @@ private:
 
     [[nodiscard]] int getMax(const std::vector<bool>& element, int size) const;
 
-    std::vector<bool> getRepresentativeVector(const std::vector<bool>& pBoolean, InputMatrix &matrix) const;
+    [[nodiscard]] std::vector<bool> getRepresentativeVector(const std::vector<bool>& pBoolean, const InputMatrix &matrix) const;
 
-    std::vector<bool> getRepresentativeVector(int index, InputMatrix &matrix) const;
+    [[nodiscard]] std::vector<bool> getRepresentativeVector(int index, const InputMatrix &matrix) const;
 
     [[nodiscard]] std::vector<bool> generateCandidate(const std::vector<bool>& father, int indexToAdd) const;
 

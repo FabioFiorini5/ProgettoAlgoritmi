@@ -105,7 +105,7 @@ int MBaseSolverV6::getMax(const std::vector<bool>& element, int size) const {
     return max;
 }
 
-std::vector<bool> MBaseSolverV6::getRepresentativeVector(const std::vector<bool>& pBoolean, InputMatrix &inputMatrix) const{
+std::vector<bool> MBaseSolverV6::getRepresentativeVector(const std::vector<bool>& pBoolean, const InputMatrix &inputMatrix) const{
     int size=inputMatrix.getRowLength();
     std::vector<bool> column(size);
     for(int i=0; i<size; i++)
@@ -121,7 +121,7 @@ std::vector<bool> MBaseSolverV6::getRepresentativeVector(const std::vector<bool>
     return column;
 }
 
-std::vector<bool> MBaseSolverV6::getRepresentativeVector(int index, InputMatrix &inputMatrix) const{
+std::vector<bool> MBaseSolverV6::getRepresentativeVector(int index, const InputMatrix &inputMatrix) const{
     std::vector<bool> bitset(inputMatrix.getColumnLength());
     bitset[index]=true;
     auto toReturn=getRepresentativeVector(bitset, inputMatrix);
