@@ -17,7 +17,8 @@ int main(int argc, char *argv[]) {
     LOG_DEBUG("start\n");
 
     MBaseSolverV6 solver;
-    if(argc==0){//base test
+    std::cout<<argc<<std::endl;
+    if(argc<=1){//base test
         InputMatrix inputMatrix;
 
         solver.solve(inputMatrix);
