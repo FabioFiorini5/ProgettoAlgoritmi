@@ -5,6 +5,10 @@
 #ifndef ALQWARITZMI_INPUTMATRIX_H
 #define ALQWARITZMI_INPUTMATRIX_H
 
+#include <string>
+#include <fstream>
+#include <iostream>
+#include <vector>
 
 class InputMatrix {
 
@@ -19,7 +23,21 @@ public:
 
     [[nodiscard]] bool getValueAt(int row, int column) const;
 
+    [[nodiscard]] bool* getRow(int rowNum) const;
+
+    [[nodiscard]] std::vector<bool> getCol(int colNum) const;
+
+    void removeColumn(int colNum);
+
+    void removeRow(int rowNum);
+
+    void print() const;
+
 private:
+    void reduceColumnLength();
+
+    void reduceRowLength();
+
     void setColumnLength(int val){
         this->columnLength=val;
     }

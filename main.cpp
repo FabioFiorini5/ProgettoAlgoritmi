@@ -4,6 +4,7 @@
 #include "MBaseSolverV3.h"
 #include "MBaseSolverV5.h"
 #include "MBaseSolverV6.h"
+#include "PreElaborator.h"
 
 #ifndef NDEBUG
 #define LOG_DEBUG printf /* cose */
@@ -16,10 +17,15 @@ int main(int argc, char *argv[]) {
     LOG_DEBUG("start\n");
 
     MBaseSolverV6 solver;
-    std::cout<<argc<<std::endl;
+    PreElaborator preElab;
+
     if(argc<=1){//base test
         InputMatrix inputMatrix;
-
+        std::cout<<"Inputmatrix prima: "<<std::endl;
+        inputMatrix.print();
+        preElab.clean(inputMatrix);
+        std::cout<<"Inputmatrix dopo: "<<std::endl;
+        inputMatrix.print();
         solver.solve(inputMatrix);
     }
     else{

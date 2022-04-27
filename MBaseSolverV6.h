@@ -12,23 +12,22 @@
 class MBaseSolverV6: public MinimumHittingSetSolver {
 public:
     
-    MBaseSolverV6(){
-        truthMap[0]=0;//0,0,0,0
-        truthMap[1]=-1;//0,0,0,1
-        truthMap[2]=1;//0,0,1,0
-        truthMap[3]=-1;//0,0,1,1
-        truthMap[4]=-1;//0,1,0,0
-        truthMap[5]=-1;//0,1,0,1
-        truthMap[6]=1;//0,1,1,0
-        truthMap[7]=1;//0,1,1,1
-        truthMap[8]=-1;//1,0,0,0
-        truthMap[9]=-1;//1,0,0,1
-        truthMap[10]=0;//1,0,1,0
-        truthMap[11]=-1;//1,0,1,1
-        truthMap[12]=-1;//1,1,0,0
-        truthMap[13]=-1;//1,1,0,1
-        truthMap[14]=0;//1,1,1,0
-        truthMap[15]=0;//1,1,1,1
+    MBaseSolverV6(){ //c0,1,2,3 //da riguardare
+        truthMap[0]=0;//0,0,0,0 caso non verificabile
+        truthMap[1]=-1;//0,0,0,1 caso non verificabile -> mhs + mhs
+        truthMap[2]=1;//0,0,1,0 la colonna aggiunta è un mhs
+        truthMap[3]=-1;//0,0,1,1 la colonna aggiunta è un mhs e l'insieme di partenza non è l'insieme vuoto
+        truthMap[4]=-1;//0,1,0,0 l'insieme di partenza è un mhs quindi lo scarto perché aggiungo una colonna vuota e automaticamente non è più un mhs //non dovrebbe poter accadaere per la logica        truthMap[5]=-1;//0,1,0,1 la colonna aggiunta è inclusa nell'insieme di partenza che è un mhs, quindi non è più un mhs e va scartato
+        truthMap[6]=1;//0,1,1,0 la colonna aggiunta è il completamento dell'insieme di partenza
+        truthMap[7]=1;//0,1,1,1 la colonna aggiunta è il completamento dell'insieme di partenza più qualche elemento in comune
+        truthMap[8]=-1;//1,0,0,0 non ci sono elementi validi, quindi scarto perché qualsiasi insieme contenente questo insieme non può essere mhs
+        truthMap[9]=-1;//1,0,0,1 qualsiasi elemento valido viene fornito sia dalla colonna aggiunta sia dall'elemento di partenza quindi scarto perché sono entrambi lo stesso elemento, quindi non mhs
+        truthMap[10]=0;//1,0,1,0 ok, insieme di partenza più colonna che fornisce almeno un valore
+        truthMap[11]=-1;//1,0,1,1 qualsiasi elemento valido viene fornito o dalla colonna aggiunta o è in comune con l'elemento di partenza quindi scarto
+        truthMap[12]=-1;//1,1,0,0 la colonna non fornisce alcun elemento valido -> scarto
+        truthMap[13]=-1;//1,1,0,1 la colonna non fornisce alcun elemento valido -> scarto
+        truthMap[14]=0;//1,1,1,0 la colonan fornisce almeno un elemento valido -> ok
+        truthMap[15]=0;//1,1,1,1 la colonna fornisce almeno un elemento valido -> ok
     }
 
     virtual ~MBaseSolverV6()=default;

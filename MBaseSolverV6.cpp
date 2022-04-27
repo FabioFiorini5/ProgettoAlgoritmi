@@ -16,24 +16,32 @@ void MBaseSolverV6::solve(InputMatrix& input) {
     std::vector<std::vector<bool>> mhss;
     queue.push(emptySet);
     while(!queue.empty()){
-        //std::cout<<"loop"<<std::endl;
+        std::cout<<"loop"<<std::endl;
         std::vector<bool> current=queue.front();
+        //debug std::cout<<"Insieme cima della coda "<<std::endl;
+        //debug print(std::cout, current);
+
         std::vector<bool> representativeVector=getRepresentativeVector(current, input);
         for(int i=getSuccessor(getMax(current, size), size); i<size; i++) {
             auto candidate = generateCandidate(current, i);
+            //std::cout<<"Candidato:"<<std::endl;
+            //print(std::cout, candidate);
             if(containsMhs(candidate, mhss)){
                 continue;
             }
             int result= check(representativeVector, i, input);
-            if(result==1&&i!=size-1){
+            if(result==1){
                 mhss.push_back(std::move(candidate));
             }
-            else if(result==0){
+            else if(result==0&&i!=size-1){
                 queue.push(std::move(candidate));
             }
         }
         queue.pop();
     }
+
+    std::cout<<"______________________________________________" <<std::endl;
+    std::cout<<"Risultati:" <<std::endl;
     for(const std::vector<bool>& vec:mhss){
         print(std::cout, vec);
     }
@@ -54,6 +62,13 @@ std::vector<bool> MBaseSolverV6::generateCandidate(const std::vector<bool>& fath
     return bitset;
 }
 
+/**
+ *
+ * @param pBoolean vettore rappresentativo
+ * @param toAdd colonna i-esima
+ * @param inputMatrix matrice
+ * @return Check restituisce -1 se il vettore è da scartare, 0 se è da aggiungere in coda, 1 se è mhs
+ */
 int MBaseSolverV6::check(const std::vector<bool>& pBoolean, int toAdd, const InputMatrix& inputMatrix) const{
     int size=inputMatrix.getRowLength();
     std::vector<bool> other=getRepresentativeVector(toAdd, inputMatrix);
@@ -74,7 +89,7 @@ int MBaseSolverV6::check(const std::vector<bool>& pBoolean, int toAdd, const Inp
 
     for(int i=0; i<size; i++)
         if(unionVector[i]==0)
-            contains0=true;
+            contains0=true; //aggiungere break
 
     for(int i=0; i<size; i++)
         if(unionVector[i]==1)
@@ -129,6 +144,7 @@ std::vector<bool> MBaseSolverV6::getRepresentativeVector(int index, const InputM
 }
 
 signed char MBaseSolverV6::evaluateTruthMap(unsigned char contains0, unsigned char contains1, unsigned char contains2, unsigned char contains3) const {
+    //std::cout<<"indice nella mappa: "<<(contains0<<3)+(contains1<<2)+(contains2<<1)+contains3<<std::endl;
     return truthMap[(contains0<<3)+(contains1<<2)+(contains2<<1)+contains3];
 }
 

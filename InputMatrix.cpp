@@ -2,10 +2,7 @@
 // Created by Blasko Racu on 19/09/21.
 //
 
-#include <string>
 #include "InputMatrix.h"
-#include <fstream>
-#include <iostream>
 
 /**
  * Ritorna quanto è lunga una colonna, cioè il numero di righe
@@ -91,7 +88,7 @@ InputMatrix::InputMatrix(const std::string& path) {
         }
         if(rowCount>=rowLength)
             break;
-        matrix[rowCount]=new bool[columnLength] ();
+        matrix[rowCount]=new bool[columnLength];
         for(int i=0; i<columnLength; i++){
             char c=line[i*2];
             if(c=='1')
@@ -99,6 +96,58 @@ InputMatrix::InputMatrix(const std::string& path) {
         }
         rowCount++;
     }
+    for(int i=0; i<rowLength; i++){
+        for(int j=0; j<columnLength; j++){
+            std::cout<<matrix[i][j];
+        }
+        std::cout<<std::endl;
+    }
+}
+
+bool* InputMatrix::getRow(int rowNum) const{
+    return matrix[rowNum];
+}
+
+std::vector<bool> InputMatrix::getCol(int colNum) const{
+    std::vector<bool> column(rowLength);
+    for(int i=0; i<rowLength; i++)
+        column[i]=matrix[i][colNum];
+    return column;
+}
+
+void InputMatrix::removeColumn(int colNum){
+    reduceColumnLength();
+    for(int i=0; i<rowLength; i++){
+        auto newRow=new bool[columnLength] ();
+        for(int j=0; j<colNum; j++){
+            newRow[j]=matrix[i][j];
+        }
+        for(int j=colNum; j<columnLength; j++){
+            newRow[j]=matrix[i][j+1];
+        }
+        delete matrix[i];
+        matrix[i]=newRow;
+    }
+}
+
+void InputMatrix::removeRow(int rowNum){
+    reduceRowLength();
+    for(int i=rowNum; i<rowLength; i++)
+    {
+        matrix[i]=matrix[i+1];
+    }
+    delete matrix[rowLength];
+}
+
+void InputMatrix::reduceColumnLength(){
+    columnLength--;
+}
+
+void InputMatrix::reduceRowLength(){
+    rowLength--;
+}
+
+void InputMatrix::print() const{
     for(int i=0; i<rowLength; i++){
         for(int j=0; j<columnLength; j++){
             std::cout<<matrix[i][j];
