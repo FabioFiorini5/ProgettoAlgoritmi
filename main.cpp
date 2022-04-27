@@ -2,7 +2,6 @@
 #include "MBaseSolver.h"
 #include "MBaseSolverV2.h"
 #include "MBaseSolverV3.h"
-#include "MBaseSolverV4.h"
 #include "MBaseSolverV5.h"
 #include "MBaseSolverV6.h"
 
@@ -25,6 +24,7 @@ int main(int argc, char *argv[]) {
     }
     else{
         InputMatrix inputMatrix(argv[1]);
+        preElab.clean(inputMatrix);
         solver.solve(inputMatrix);
     }
 
