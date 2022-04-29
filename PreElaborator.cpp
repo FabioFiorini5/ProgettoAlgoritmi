@@ -33,6 +33,7 @@ void PreElaborator::cleanCols(InputMatrix &matrix) {
         }
         if(toDelete){
             matrix.removeColumn(i);
+            i--;
         }
 
     }
