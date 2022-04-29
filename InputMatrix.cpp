@@ -88,7 +88,7 @@ InputMatrix::InputMatrix(const std::string& path) {
         }
         if(rowCount>=rowLength)
             break;
-        matrix[rowCount]=new bool[columnLength];
+        matrix[rowCount]=new bool[columnLength]();
         for(int i=0; i<columnLength; i++){
             char c=line[i*2];
             if(c=='1')
@@ -96,12 +96,7 @@ InputMatrix::InputMatrix(const std::string& path) {
         }
         rowCount++;
     }
-    for(int i=0; i<rowLength; i++){
-        for(int j=0; j<columnLength; j++){
-            std::cout<<matrix[i][j];
-        }
-        std::cout<<std::endl;
-    }
+    print();
 }
 
 bool* InputMatrix::getRow(int rowNum) const{
@@ -134,7 +129,9 @@ void InputMatrix::removeRow(int rowNum){
     reduceRowLength();
     for(int i=rowNum; i<rowLength; i++)
     {
-        matrix[i]=matrix[i+1];
+        for(int j=0; j<columnLength; j++){
+            matrix[i][j]=matrix[i+1][j];
+        }
     }
     delete matrix[rowLength];
 }
@@ -150,7 +147,7 @@ void InputMatrix::reduceRowLength(){
 void InputMatrix::print() const{
     for(int i=0; i<rowLength; i++){
         for(int j=0; j<columnLength; j++){
-            std::cout<<matrix[i][j];
+            std::cout<<"["<<matrix[i][j]<<"]";
         }
         std::cout<<std::endl;
     }

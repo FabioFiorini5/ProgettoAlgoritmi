@@ -1,8 +1,4 @@
 #include <iostream>
-#include "MBaseSolver.h"
-#include "MBaseSolverV2.h"
-#include "MBaseSolverV3.h"
-#include "MBaseSolverV5.h"
 #include "MBaseSolverV6.h"
 #include "PreElaborator.h"
 
@@ -30,7 +26,11 @@ int main(int argc, char *argv[]) {
     }
     else{
         InputMatrix inputMatrix(argv[1]);
+        std::cout<<"Inputmatrix prima: "<<std::endl;
+        inputMatrix.print();
         preElab.clean(inputMatrix);
+        std::cout<<"Inputmatrix dopo: "<<std::endl;
+        inputMatrix.print();
         solver.solve(inputMatrix);
     }
 

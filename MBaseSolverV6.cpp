@@ -10,13 +10,26 @@
 
 void MBaseSolverV6::solve(InputMatrix& input) {
     int size=input.getColumnLength();
-    auto emptySet=std::vector<bool>(size);
+    std::vector<bool> emptySet(size);
     std::queue<std::vector<bool>> queue;
 
     std::vector<std::vector<bool>> mhss;
     queue.push(emptySet);
+    clock_t startTime = clock();
+    long counter=0;
+
     while(!queue.empty()){
-        std::cout<<"loop"<<std::endl;
+        if(counter%10000==0){
+            clock_t endTime = clock();
+            clock_t clockTicksTaken = endTime - startTime;
+            double timeInSeconds = clockTicksTaken / (double) CLOCKS_PER_SEC;
+            std::cout<<timeInSeconds<<std::endl;
+            startTime=clock();
+        }
+
+        counter++;
+
+        //std::cout<<"loop"<<std::endl;
         std::vector<bool> current=queue.front();
         //debug std::cout<<"Insieme cima della coda "<<std::endl;
         //debug print(std::cout, current);
@@ -41,6 +54,7 @@ void MBaseSolverV6::solve(InputMatrix& input) {
     }
 
     std::cout<<"______________________________________________" <<std::endl;
+    std::cout<<"Numero di Iterazioni: "<<counter<<std::endl;
     std::cout<<"Risultati:" <<std::endl;
     for(const std::vector<bool>& vec:mhss){
         print(std::cout, vec);
@@ -123,7 +137,7 @@ int MBaseSolverV6::getMax(const std::vector<bool>& element, int size) const {
 std::vector<bool> MBaseSolverV6::getRepresentativeVector(const std::vector<bool>& pBoolean, const InputMatrix &inputMatrix) const{
     int size=inputMatrix.getRowLength();
     std::vector<bool> column(size);
-    for(int i=0; i<size; i++)
+for(int i=0; i<size; i++)
         column[i]=false;
     for(int i=0; i<inputMatrix.getColumnLength(); i++){
         if(!pBoolean[i])

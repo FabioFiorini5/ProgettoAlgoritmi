@@ -51,7 +51,7 @@ private:
     void print(std::ostream &stream, const std::vector<bool>& pBoolean) const;
 
     [[nodiscard]] signed char evaluateTruthMap(unsigned char contains0, unsigned char contains1, unsigned char contains2, unsigned char contains3) const;
-    
+
     signed char truthMap[16];
 
     [[nodiscard]] bool containsMhs(const std::vector<bool>& vector, const std::vector<std::vector<bool>>& mhss) const;
