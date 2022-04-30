@@ -107,16 +107,21 @@ int MBaseSolverV6::check(const bool* pBoolean, int toAdd, const InputMatrix& inp
     delete[] other;
 
     for(int i=0; i<size; i++)
-        if(unionVector[i]==0)
-            contains0=true; //aggiungere break
-
+        if(unionVector[i]==0){
+            contains0=true;
+            break;
+        }
     for(int i=0; i<size; i++)
-        if(unionVector[i]==1)
+        if(unionVector[i]==1){
             contains1=true;
+            break;
+        }
 
     for(int i=0; i<size; i++)
-        if(unionVector[i]==2)
+        if(unionVector[i]==2){
             contains2=true;
+            break;
+        }
 
     for(int i=0; i<size; i++)
         if(unionVector[i]==3){
@@ -181,8 +186,8 @@ bool MBaseSolverV6::containsMhs(const bool* candidate, const std::vector<bool*>&
     return false;
 }
 
-bool MBaseSolverV6::isSubset(const std::vector<bool> &mhs, const std::vector<bool> &candidate) const {
-    for(int i=0; i<mhs.size(); i++){
+bool MBaseSolverV6::isSubset(const bool* mhs, const bool* candidate, int max, int min) const {
+    for(int i=min; i<max; i++){
         if(mhs[i]&&!candidate[i])
             return false;
     }

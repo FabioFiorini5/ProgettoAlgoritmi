@@ -43,11 +43,11 @@ private:
 
     [[nodiscard]] int getMax(const bool* element, int size) const;
 
-    [[nodiscard]] std::vector<bool> getRepresentativeVector(const std::vector<bool>& pBoolean, const InputMatrix &matrix) const;
+    [[nodiscard]] bool* getRepresentativeVector(const bool* pBoolean, const InputMatrix &matrix) const;
 
-    [[nodiscard]] std::vector<bool> getRepresentativeVector(int index, const InputMatrix &matrix) const;
+    [[nodiscard]] bool* getRepresentativeVector(int index, const InputMatrix &matrix) const;
 
-    [[nodiscard]] std::vector<bool> generateCandidate(const std::vector<bool>& father, int indexToAdd) const;
+    void generateCandidate(const bool* father, int indexToAdd, bool* candidate) const;
 
     void printVector(std::ostream &stream, const bool* pBoolean) const;
 
@@ -55,7 +55,7 @@ private:
 
     signed char truthMap[16];
 
-    [[nodiscard]] bool containsMhs(const std::vector<bool>& vector, const std::vector<std::vector<bool>>& mhss) const;
+    [[nodiscard]] bool containsMhs(const bool* vector, const std::vector<bool*>& mhss) const;
 
     [[nodiscard]] bool isSubset(const bool* vector, const bool* vector1, int max, int min=0) const;
 
