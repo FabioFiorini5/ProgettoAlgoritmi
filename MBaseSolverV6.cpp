@@ -1,4 +1,3 @@
-//
 // Created by Blasko Racu on 19/09/21.
 //
 
@@ -9,17 +8,16 @@
 #include <iterator>
 
 void MBaseSolverV6::solve(InputMatrix& input) {
-    int size=input.getColumnLength();
-    std::vector<bool> emptySet(size);
-    std::queue<std::vector<bool>> queue;
+    auto emptySet=new bool[columnSize]();
+    std::queue<bool*> queue;
 
-    std::vector<std::vector<bool>> mhss;
+    std::vector<bool*> mhss;
     queue.push(emptySet);
     clock_t startTime = clock();
     long counter=0;
 
     while(!queue.empty()){
-        if(counter%10000==0){
+        if(counter%1000000==0){
             clock_t endTime = clock();
             clock_t clockTicksTaken = endTime - startTime;
             double timeInSeconds = clockTicksTaken / (double) CLOCKS_PER_SEC;
@@ -29,51 +27,56 @@ void MBaseSolverV6::solve(InputMatrix& input) {
 
         counter++;
 
-        //std::cout<<"loop"<<std::endl;
-        std::vector<bool> current=queue.front();
-        //debug std::cout<<"Insieme cima della coda "<<std::endl;
-        //debug print(std::cout, current);
+        auto current=queue.front();
 
-        std::vector<bool> representativeVector=getRepresentativeVector(current, input);
-        for(int i=getSuccessor(getMax(current, size), size); i<size; i++) {
-            auto candidate = generateCandidate(current, i);
-            //std::cout<<"Candidato:"<<std::endl;
-            //print(std::cout, candidate);
+        auto representativeVector=getRepresentativeVector(current, input);
+
+         for(int i=getSuccessor(getMax(current, columnSize), columnSize); i < columnSize; i++) {
+            auto candidate= new bool[columnSize]();
+            generateCandidate(current, i, candidate);
+
             if(containsMhs(candidate, mhss)){
+                delete[] candidate;
                 continue;
             }
             int result= check(representativeVector, i, input);
             if(result==1){
-                mhss.push_back(std::move(candidate));
+                mhss.push_back(candidate);
             }
-            else if(result==0&&i!=size-1){
-                queue.push(std::move(candidate));
+            else if(result==0&& i != columnSize - 1){
+                queue.push(candidate);
             }
+            else
+                delete[] candidate;
         }
+        delete[] representativeVector;
+        delete[] current;
         queue.pop();
     }
 
     std::cout<<"______________________________________________" <<std::endl;
     std::cout<<"Numero di Iterazioni: "<<counter<<std::endl;
     std::cout<<"Risultati:" <<std::endl;
-    for(const std::vector<bool>& vec:mhss){
-        print(std::cout, vec);
+    for(auto vec:mhss){
+        printVector(std::cout, vec);
     }
 }
 
-void MBaseSolverV6::print(std::ostream& stream, const std::vector<bool>& pBoolean) const{
-    for(const bool b:pBoolean){
+void MBaseSolverV6::printVector(std::ostream& stream, const bool* pBoolean) const{
+    for(int i=0; i < columnSize; i++){
         stream<<"[";
-        stream<<(b?"1":"0");
+        stream<<(pBoolean[i]?"1":"0");
         stream<<"]";
     }
     stream<<std::endl;
 }
 
-std::vector<bool> MBaseSolverV6::generateCandidate(const std::vector<bool>& father, int indexToAdd) const{
-    std::vector<bool> bitset(father);
-    bitset[indexToAdd]=true;
-    return bitset;
+
+
+void MBaseSolverV6::generateCandidate(const bool* father, int indexToAdd, bool* candidate) const{
+    for(int i=0; i<columnSize; i++)
+        candidate[i]=father[i];
+    candidate[indexToAdd]=true;
 }
 
 /**
@@ -83,15 +86,15 @@ std::vector<bool> MBaseSolverV6::generateCandidate(const std::vector<bool>& fath
  * @param inputMatrix matrice
  * @return Check restituisce -1 se il vettore è da scartare, 0 se è da aggiungere in coda, 1 se è mhs
  */
-int MBaseSolverV6::check(const std::vector<bool>& pBoolean, int toAdd, const InputMatrix& inputMatrix) const{
+int MBaseSolverV6::check(const bool* pBoolean, int toAdd, const InputMatrix& inputMatrix) const{
     int size=inputMatrix.getRowLength();
-    std::vector<bool> other=getRepresentativeVector(toAdd, inputMatrix);
-    std::vector<char> unionVector(size);
+    auto other=getRepresentativeVector(toAdd, inputMatrix);
+
+    //printRepVector(std::cout, other, inputMatrix.getRowLength());
+    auto unionVector= new int[size]();
 
     for(int i=0; i<size; i++)
         unionVector[i]=pBoolean[i];
-
-
     bool contains0=false;
     bool contains1=false;
     bool contains2=false;
@@ -100,6 +103,8 @@ int MBaseSolverV6::check(const std::vector<bool>& pBoolean, int toAdd, const Inp
     for(int i=0; i<size; i++){
         unionVector[i]+=other[i]*2;
     }
+
+    delete[] other;
 
     for(int i=0; i<size; i++)
         if(unionVector[i]==0)
@@ -114,8 +119,13 @@ int MBaseSolverV6::check(const std::vector<bool>& pBoolean, int toAdd, const Inp
             contains2=true;
 
     for(int i=0; i<size; i++)
-        if(unionVector[i]==3)
+        if(unionVector[i]==3){
             contains3=true;
+            break;
+        }
+
+    delete[] unionVector;
+
     return evaluateTruthMap(contains0, contains1, contains2, contains3);
 }
 
@@ -125,7 +135,7 @@ int MBaseSolverV6::getSuccessor(int val, int other) const {
         other;
 }
 
-int MBaseSolverV6::getMax(const std::vector<bool>& element, int size) const {
+int MBaseSolverV6::getMax(const bool* element, int size) const {
     int max=size;
     do{
         max--;
@@ -134,38 +144,38 @@ int MBaseSolverV6::getMax(const std::vector<bool>& element, int size) const {
     return max;
 }
 
-std::vector<bool> MBaseSolverV6::getRepresentativeVector(const std::vector<bool>& pBoolean, const InputMatrix &inputMatrix) const{
+bool* MBaseSolverV6::getRepresentativeVector(const bool* pBoolean, const InputMatrix &inputMatrix) const{
     int size=inputMatrix.getRowLength();
-    std::vector<bool> column(size);
-for(int i=0; i<size; i++)
-        column[i]=false;
+    auto column=new bool[columnSize]();
     for(int i=0; i<inputMatrix.getColumnLength(); i++){
         if(!pBoolean[i])
             continue;
 
         for(int j=0; j<size; j++){
-            column[j]=inputMatrix.getValueAt(j,i);
+            column[j]=column[j]||inputMatrix.getValueAt(j,i);
         }
     }
     return column;
 }
 
-std::vector<bool> MBaseSolverV6::getRepresentativeVector(int index, const InputMatrix &inputMatrix) const{
-    std::vector<bool> bitset(inputMatrix.getColumnLength());
+bool* MBaseSolverV6::getRepresentativeVector(int index, const InputMatrix &inputMatrix) const{
+    auto bitset= new bool[inputMatrix.getColumnLength()]();
     bitset[index]=true;
-    auto toReturn=getRepresentativeVector(bitset, inputMatrix);
+    auto toReturn= getRepresentativeVector(bitset, inputMatrix);
+    delete[] bitset;
     return toReturn;
 }
 
 signed char MBaseSolverV6::evaluateTruthMap(unsigned char contains0, unsigned char contains1, unsigned char contains2, unsigned char contains3) const {
-    //std::cout<<"indice nella mappa: "<<(contains0<<3)+(contains1<<2)+(contains2<<1)+contains3<<std::endl;
+    //std::cout<<(contains0<<3)+(contains1<<2)+(contains2<<1)+contains3<<std::endl;
     return truthMap[(contains0<<3)+(contains1<<2)+(contains2<<1)+contains3];
 }
 
-bool MBaseSolverV6::containsMhs(const std::vector<bool>& candidate, const std::vector<std::vector<bool>>& mhss) const{
-    //std::ranges::any_of
-    for(const std::vector<bool>& currentMhs:mhss){
-        if(isSubset(currentMhs, candidate))
+bool MBaseSolverV6::containsMhs(const bool* candidate, const std::vector<bool*>& mhss) const{
+    int max= getMax(candidate, columnSize);
+    int min= getMin(candidate, columnSize);
+    for(auto currentMhs:mhss){
+        if(isSubset(currentMhs, candidate, max, min))
             return true;
     }
     return false;
@@ -178,5 +188,23 @@ bool MBaseSolverV6::isSubset(const std::vector<bool> &mhs, const std::vector<boo
     }
     return true;
 }
+
+void MBaseSolverV6::printRepVector(std::ostream& stream, const bool *pBoolean, int length) const {
+    for(int i=0; i < length; i++){
+        stream<<"[";
+        stream<<(pBoolean[i]?"1":"0");
+        stream<<"]";
+    }
+    stream<<std::endl;
+}
+
+int MBaseSolverV6::getMin(const bool *pInt, int size) const {
+    for(int i=0; i<size; i++){
+        if(pInt[i])
+            return i;
+    }
+    return 0;
+}
+
 
 
