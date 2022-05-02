@@ -172,7 +172,6 @@ bool* MBaseSolverV6::getRepresentativeVector(int index, const InputMatrix &input
 }
 
 signed char MBaseSolverV6::evaluateTruthMap(unsigned char contains0, unsigned char contains1, unsigned char contains2, unsigned char contains3) const {
-    //std::cout<<(contains0<<3)+(contains1<<2)+(contains2<<1)+contains3<<std::endl;
     return truthMap[(contains0<<3)+(contains1<<2)+(contains2<<1)+contains3];
 }
 

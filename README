@@ -14,8 +14,18 @@ più il problema è grande più è possibile il verificarsi di minimum hitting s
 L'accesso alla struttura dati, per quanto possa avvenire in tempo lineare nei casi migliori,
 è comunque proporzionale alla grandezza della struttura dati, nel caso peggiore.
 
-Implementazioni future possibili:
-    lista di esclusione - all'inizio un set di bool array, per testarne il funzionamento, poi si può limare il tempo di
-accessso impostando come chiave la valorizzazione numerica della combinazione binaria.
-    pre-elaborazione
-    parallelizzazione con pattern producer consumer
+
+Ordinamento colonne
+
+proposta:
+aggiungere std::string* a InputMatrix
+al caricamento si crea una matrice bool** più il vettore std::string*
+si ordina non in place il vettore std::string* (oppure copia del vettore più ordinamento in place quello che è)
+si ottengono due vettori std::string*
+mappa std::string -> posizione
+si popola la mappa girando una volta un vettore std::string* (va bene sia iniziale che finale)
+si ottiene un accesso per stringa da posizione iniziale a finale
+si scorre l'altro vettore e si copia la relativa colonna alla posizione i-esima nella posizione segnata dalla mappa
+in un'altra matrice bool**
+
+Per stampare infine il risultato se la colonna è scelta al posto di scrivere 1 si scrive il nome i-esimo nel vettore std::string
