@@ -27,7 +27,7 @@ public:
         truthMap[11]=-1;//1,0,1,1 qualsiasi elemento valido viene fornito o dalla colonna aggiunta o è in comune con l'elemento di partenza quindi scarto
         truthMap[12]=-1;//1,1,0,0 la colonna non fornisce alcun elemento valido -> scarto
         truthMap[13]=-1;//1,1,0,1 la colonna non fornisce alcun elemento valido -> scarto
-        truthMap[14]=0;//1,1,1,0 la colonan fornisce almeno un elemento valido -> ok
+        truthMap[14]=0;//1,1,1,0 la colonna fornisce almeno un elemento valido -> ok
         truthMap[15]=0;//1,1,1,1 la colonna fornisce almeno un elemento valido -> ok
     }
 

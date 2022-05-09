@@ -53,7 +53,6 @@ void MBaseSolverV6::solve(InputMatrix& input) {
         delete[] current;
         queue.pop();
     }
-
     std::cout<<"______________________________________________" <<std::endl;
     std::cout<<"Numero di Iterazioni: "<<counter<<std::endl;
     std::cout<<"Risultati:" <<std::endl;
@@ -152,23 +151,28 @@ int MBaseSolverV6::getMax(const bool* element, int size) const {
 bool* MBaseSolverV6::getRepresentativeVector(const bool* pBoolean, const InputMatrix &inputMatrix) const{
     int size=inputMatrix.getRowLength();
     auto column=new bool[columnSize]();
-    for(int i=0; i<inputMatrix.getColumnLength(); i++){
+    auto min = getMin(pBoolean, columnSize);
+    auto max = getMax(pBoolean, columnSize);
+    for(int i=min; i<=max; i++){
         if(!pBoolean[i])
             continue;
 
         for(int j=0; j<size; j++){
             column[j]=column[j]||inputMatrix.getValueAt(j,i);
+
         }
     }
     return column;
 }
 
 bool* MBaseSolverV6::getRepresentativeVector(int index, const InputMatrix &inputMatrix) const{
-    auto bitset= new bool[inputMatrix.getColumnLength()]();
-    bitset[index]=true;
-    auto toReturn= getRepresentativeVector(bitset, inputMatrix);
-    delete[] bitset;
-    return toReturn;
+    int size=inputMatrix.getRowLength();
+    auto column=new bool[columnSize]();
+    for(int j=0; j<size; j++){
+        column[j]=column[j]||inputMatrix.getValueAt(j,index);
+
+    }
+    return column;
 }
 
 signed char MBaseSolverV6::evaluateTruthMap(unsigned char contains0, unsigned char contains1, unsigned char contains2, unsigned char contains3) const {
