@@ -49,7 +49,7 @@ private:
 
     void generateCandidate(const bool* father, int indexToAdd, bool* candidate) const;
 
-    void printVector(std::ostream &stream, const bool* pBoolean) const;
+    void printVector(std::ostream &stream, const bool *pBoolean, InputMatrix matrix) const;
 
     [[nodiscard]] signed char evaluateTruthMap(unsigned char contains0, unsigned char contains1, unsigned char contains2, unsigned char contains3) const;
 

@@ -84,6 +84,9 @@ InputMatrix::InputMatrix(const std::string& path) {
     while (std::getline(infile2, line))
     {
         if(line.starts_with(";;;")){
+            if(line.starts_with(";;; Map")){
+                loadLabels(line);
+            }
             continue;
         }
         if(rowCount>=rowLength)
@@ -151,5 +154,33 @@ void InputMatrix::print() const{
         }
         std::cout<<std::endl;
     }
+}
+
+void InputMatrix::loadLabels(std::string& string) {
+    labels=new Label [columnLength]();
+    std::string delimiter = " ";
+    string.erase(0, 8);
+    size_t pos = 0;
+    std::string token;
+    int i=0;
+    while ((pos = string.find(delimiter)) != std::string::npos) {
+        token = string.substr(0, pos);
+
+        int posizioneParentesi=token.find("(")+1;
+
+        std::string val=token.substr(posizioneParentesi, token.size()-posizioneParentesi-1);
+
+        labels[i].letter = val[0];
+        labels[i++].number = std::stoi(val.substr(1));
+        string.erase(0, pos + delimiter.length());
+    }
+    for(int j=0; j<i; j++){
+        std::cout<<labels[j].letter<<labels[j].number<<std::endl;
+    }
+
+}
+
+InputMatrix::Label *InputMatrix::getLabels() const {
+    return labels;
 }
 

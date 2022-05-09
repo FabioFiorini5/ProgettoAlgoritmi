@@ -11,7 +11,24 @@
 #include <vector>
 
 class InputMatrix {
+    using Label = struct _label {
+        char letter;
+        unsigned short number;
 
+
+
+        int operator=(_label& other){
+            if(letter<other.letter)
+                return -1;
+            if(letter>other.letter)
+                return 1;
+            if(number < other.number)
+                return -1;
+            if(number > other.number)
+                return 1;
+            return 0;
+        }
+    };
 public:
     explicit InputMatrix(const std::string& path);
 
@@ -26,6 +43,8 @@ public:
     [[nodiscard]] bool* getRow(int rowNum) const;
 
     [[nodiscard]] std::vector<bool> getCol(int colNum) const;
+
+    Label *getLabels() const;
 
     void removeColumn(int colNum);
 
@@ -48,6 +67,12 @@ private:
     bool** matrix;
     int columnLength=0;
     int rowLength=0;
+
+
+
+    Label* labels;
+
+    void loadLabels(std::string& string);
 };
 
 

@@ -57,17 +57,24 @@ void MBaseSolverV6::solve(InputMatrix& input) {
     std::cout<<"Numero di Iterazioni: "<<counter<<std::endl;
     std::cout<<"Risultati:" <<std::endl;
     for(auto vec:mhss){
-        printVector(std::cout, vec);
+        printVector(std::cout, vec, input);
     }
 }
 
-void MBaseSolverV6::printVector(std::ostream& stream, const bool* pBoolean) const{
+void MBaseSolverV6::printVector(std::ostream &stream, const bool *pBoolean, InputMatrix matrix) const{
+    stream<<"{";
     for(int i=0; i < columnSize; i++){
-        stream<<"[";
-        stream<<(pBoolean[i]?"1":"0");
-        stream<<"]";
+        if(pBoolean[i]){
+            stream<<matrix.getLabels()[i].letter<<matrix.getLabels()[i].number;
+            if(i!= getMax(pBoolean, columnSize)){
+                stream<<", ";
+            }
+        }
+       // stream<<"[";
+       // stream<<(pBoolean[i]?"1":"0");
+       // stream<<"]";
     }
-    stream<<std::endl;
+    stream<<"}"<<std::endl;
 }
 
 
