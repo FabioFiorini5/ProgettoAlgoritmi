@@ -17,7 +17,7 @@ class InputMatrix {
 
 
 
-        int operator=(_label& other){
+        int operator==(_label& other) const{
             if(letter<other.letter)
                 return -1;
             if(letter>other.letter)
@@ -27,6 +27,11 @@ class InputMatrix {
             if(number > other.number)
                 return 1;
             return 0;
+        }
+        _label& operator=(_label& other){
+            this->letter=other.letter;
+            this->number=other.number;
+            return *this;
         }
     };
 public:

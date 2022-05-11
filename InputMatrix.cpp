@@ -124,8 +124,19 @@ void InputMatrix::removeColumn(int colNum){
             newRow[j]=matrix[i][j+1];
         }
         delete matrix[i];
+
         matrix[i]=newRow;
     }
+
+    auto newLabels=new Label[columnLength]();
+    for(int j=0; j<colNum; j++) {
+        newLabels[j] = labels[j];
+    }
+    for(int j=colNum; j<columnLength; j++) {
+        newLabels[j] = labels[j + 1];
+    }
+    delete[] labels;
+    labels=newLabels;
 }
 
 void InputMatrix::removeRow(int rowNum){
@@ -148,6 +159,10 @@ void InputMatrix::reduceRowLength(){
 }
 
 void InputMatrix::print() const{
+    for(int j=0; j<columnLength; j++){
+        std::cout<<labels[j].letter<<labels[j].number<<"|";
+    }
+    std::cout<<std::endl;
     for(int i=0; i<rowLength; i++){
         for(int j=0; j<columnLength; j++){
             std::cout<<"["<<matrix[i][j]<<"]";
@@ -157,6 +172,7 @@ void InputMatrix::print() const{
 }
 
 void InputMatrix::loadLabels(std::string& string) {
+    std::cout<<string<<std::endl;
     labels=new Label [columnLength]();
     std::string delimiter = " ";
     string.erase(0, 8);
@@ -166,17 +182,18 @@ void InputMatrix::loadLabels(std::string& string) {
     while ((pos = string.find(delimiter)) != std::string::npos) {
         token = string.substr(0, pos);
 
-        int posizioneParentesi=token.find("(")+1;
+        int parenthesisPosition= token.find("(") + 1;
 
-        std::string val=token.substr(posizioneParentesi, token.size()-posizioneParentesi-1);
+        std::string val=token.substr(parenthesisPosition, token.size() - parenthesisPosition - 1);
 
         labels[i].letter = val[0];
         labels[i++].number = std::stoi(val.substr(1));
         string.erase(0, pos + delimiter.length());
     }
     for(int j=0; j<i; j++){
-        std::cout<<labels[j].letter<<labels[j].number<<std::endl;
+        std::cout<<labels[j].letter<<labels[j].number<<" ";
     }
+    std::cout<<std::endl;
 
 }
 
