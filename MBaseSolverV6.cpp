@@ -187,9 +187,11 @@ signed char MBaseSolverV6::evaluateTruthMap(unsigned char contains0, unsigned ch
 }
 
 bool MBaseSolverV6::containsMhs(const bool* candidate, const std::vector<bool*>& mhss) const{
-    int max= getMax(candidate, columnSize);
-    int min= getMin(candidate, columnSize);
+
+
     for(auto currentMhs:mhss){
+        int max= getMax(currentMhs, columnSize)+1;
+        int min= getMin(currentMhs, columnSize);
         if(isSubset(currentMhs, candidate, max, min))
             return true;
     }
