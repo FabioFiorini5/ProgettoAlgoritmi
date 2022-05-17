@@ -74,9 +74,9 @@ void PreElaborator::cleanDuplicates(InputMatrix &matrix) {
             }
 
         }
-        std::cout<<"Column "<<matrix.getLabels()[i].letter<<matrix.getLabels()[i].number;
+        std::cout<<"Column";//<<matrix.getLabels()[i].letter<<matrix.getLabels()[i].number;
         for(auto val: matrix.getLabels()[i].copied){
-            std::cout<<" |"<<val.letter<<val.number;
+            std::cout<<val.letter<<val.number<<" |";
         }
         std::cout<<std::endl;
     }

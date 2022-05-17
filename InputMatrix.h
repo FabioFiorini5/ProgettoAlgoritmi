@@ -19,19 +19,6 @@ public:
         unsigned short index;
         std::vector<_label> copied;
 
-
-        int operator==(_label& other) const{
-            if(letter<other.letter)
-                return -1;
-            if(letter>other.letter)
-                return 1;
-            if(number < other.number)
-                return -1;
-            if(number > other.number)
-                return 1;
-            return 0;
-        }
-
     };
 public:
     explicit InputMatrix(const std::string& path);

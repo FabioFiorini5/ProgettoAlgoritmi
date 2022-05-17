@@ -65,6 +65,7 @@ InputMatrix::InputMatrix() {
 InputMatrix::InputMatrix(const std::string& path) {
     std::ifstream infile(path);
     std::string line;
+    //std::cout << path << std::endl;
     int row=0;
     int column=0;
     while (std::getline(infile, line))

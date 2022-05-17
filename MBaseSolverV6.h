@@ -67,8 +67,13 @@ private:
 
     [[nodiscard]] bool canContinue(const bool *pBoolean, int length) const;
 
-    std::vector<bool *> extractMhss(std::vector<bool *> vector1);
+    //std::vector<bool *> extractMhss(std::vector<bool *> vector1);
 
     std::vector<InputMatrix::Label> getLabels(bool *pBoolean, InputMatrix& inputMatrix);
+
+    void extractMhs(bool* mhs, int pos_attuale,
+                    std::vector<std::vector<InputMatrix::Label>> &vettoreFinale,
+                    std::vector<InputMatrix::Label> &vettoreParziale,
+                    InputMatrix& inputMatrix);
 };
 #endif //ALQWARITZMI_MBaseSolverV6_H
