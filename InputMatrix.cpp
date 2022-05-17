@@ -188,7 +188,10 @@ void InputMatrix::loadLabels(std::string& string) {
         std::string val=token.substr(parenthesisPosition, token.size() - parenthesisPosition - 1);
 
         labels[i].letter = val[0];
-        labels[i++].number = std::stoi(val.substr(1));
+        labels[i].number = std::stoi(val.substr(1));
+        labels[i].index = i;
+        labels[i].copied.push_back(labels[i]);
+        i++;
         string.erase(0, pos + delimiter.length());
     }
     for(int j=0; j<i; j++){

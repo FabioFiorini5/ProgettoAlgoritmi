@@ -56,7 +56,9 @@ void MBaseSolverV6::solve(InputMatrix& input) {
     std::cout<<"______________________________________________" <<std::endl;
     std::cout<<"Numero di Iterazioni: "<<counter<<std::endl;
     std::cout<<"Risultati:" <<std::endl;
-    auto allMhss=extractMhss(mhss);
+
+
+    std::vector<std::vector<InputMatrix::Label>> vettoreFinale;
     for(auto vec:mhss){
         std::vector<InputMatrix::Label> vettoreParziale;
         extractMhs(vec, 0, vettoreFinale, vettoreParziale, input);

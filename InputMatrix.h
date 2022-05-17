@@ -35,7 +35,7 @@ public:
 
     [[nodiscard]] std::vector<bool> getCol(int colNum) const;
 
-    Label *getLabels() const;
+    [[nodiscard]] Label *getLabels() const;
 
     void removeColumn(int colNum);
 
