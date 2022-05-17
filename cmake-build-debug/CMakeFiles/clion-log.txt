@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2022.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2022.1/bin/ninja/win/ninja.exe" -G Ninja -S C:\Users\Utente\CLionProjects\ProgettoAlgoritmi -B C:\Users\Utente\CLionProjects\ProgettoAlgoritmi\cmake-build-debug
+"/Users/blasko/Library/Application Support/JetBrains/Toolbox/apps/CLion-ARM/ch-0/203.6682.181/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/blasko/CLionProjects/ProgettoAlgoritmi
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/Utente/CLionProjects/ProgettoAlgoritmi/cmake-build-debug
+-- Build files have been written to: /Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug

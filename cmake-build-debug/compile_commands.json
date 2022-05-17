@@ -1,42 +1,42 @@
 [
 {
-  "directory": "C:/Users/Utente/CLionProjects/ProgettoAlgoritmi/cmake-build-debug",
-  "command": "C:\\PROGRA~1\\JETBRA~1\\CLION2~1.1\\bin\\mingw\\bin\\G__~1.EXE -g -Wall -Wextra -Wvla -v -O3 -g -std=gnu++20 -o CMakeFiles\\alg_str_dati.dir\\main.cpp.obj -c C:\\Users\\Utente\\CLionProjects\\ProgettoAlgoritmi\\main.cpp",
-  "file": "C:\\Users\\Utente\\CLionProjects\\ProgettoAlgoritmi\\main.cpp"
+  "directory": "/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++    -g -fno-omit-frame-pointer -fsanitize=address -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk   -Wall -Wextra -Wvla -v -O3 -fsanitize=address -static-libsan -g -std=gnu++2a -o CMakeFiles/alg_str_dati.dir/main.cpp.o -c /Users/blasko/CLionProjects/ProgettoAlgoritmi/main.cpp",
+  "file": "/Users/blasko/CLionProjects/ProgettoAlgoritmi/main.cpp"
 },
 {
-  "directory": "C:/Users/Utente/CLionProjects/ProgettoAlgoritmi/cmake-build-debug",
-  "command": "C:\\PROGRA~1\\JETBRA~1\\CLION2~1.1\\bin\\mingw\\bin\\G__~1.EXE -g -Wall -Wextra -Wvla -v -O3 -g -std=gnu++20 -o CMakeFiles\\alg_str_dati.dir\\InputMatrix.cpp.obj -c C:\\Users\\Utente\\CLionProjects\\ProgettoAlgoritmi\\InputMatrix.cpp",
-  "file": "C:\\Users\\Utente\\CLionProjects\\ProgettoAlgoritmi\\InputMatrix.cpp"
+  "directory": "/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++    -g -fno-omit-frame-pointer -fsanitize=address -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk   -Wall -Wextra -Wvla -v -O3 -fsanitize=address -static-libsan -g -std=gnu++2a -o CMakeFiles/alg_str_dati.dir/InputMatrix.cpp.o -c /Users/blasko/CLionProjects/ProgettoAlgoritmi/InputMatrix.cpp",
+  "file": "/Users/blasko/CLionProjects/ProgettoAlgoritmi/InputMatrix.cpp"
 },
 {
-  "directory": "C:/Users/Utente/CLionProjects/ProgettoAlgoritmi/cmake-build-debug",
-  "command": "C:\\PROGRA~1\\JETBRA~1\\CLION2~1.1\\bin\\mingw\\bin\\G__~1.EXE -g -Wall -Wextra -Wvla -v -O3 -g -std=gnu++20 -o CMakeFiles\\alg_str_dati.dir\\MBaseSolver.cpp.obj -c C:\\Users\\Utente\\CLionProjects\\ProgettoAlgoritmi\\MBaseSolver.cpp",
-  "file": "C:\\Users\\Utente\\CLionProjects\\ProgettoAlgoritmi\\MBaseSolver.cpp"
+  "directory": "/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++    -g -fno-omit-frame-pointer -fsanitize=address -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk   -Wall -Wextra -Wvla -v -O3 -fsanitize=address -static-libsan -g -std=gnu++2a -o CMakeFiles/alg_str_dati.dir/MBaseSolver.cpp.o -c /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolver.cpp",
+  "file": "/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolver.cpp"
 },
 {
-  "directory": "C:/Users/Utente/CLionProjects/ProgettoAlgoritmi/cmake-build-debug",
-  "command": "C:\\PROGRA~1\\JETBRA~1\\CLION2~1.1\\bin\\mingw\\bin\\G__~1.EXE -g -Wall -Wextra -Wvla -v -O3 -g -std=gnu++20 -o CMakeFiles\\alg_str_dati.dir\\MBaseSolverV2.cpp.obj -c C:\\Users\\Utente\\CLionProjects\\ProgettoAlgoritmi\\MBaseSolverV2.cpp",
-  "file": "C:\\Users\\Utente\\CLionProjects\\ProgettoAlgoritmi\\MBaseSolverV2.cpp"
+  "directory": "/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++    -g -fno-omit-frame-pointer -fsanitize=address -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk   -Wall -Wextra -Wvla -v -O3 -fsanitize=address -static-libsan -g -std=gnu++2a -o CMakeFiles/alg_str_dati.dir/MBaseSolverV2.cpp.o -c /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV2.cpp",
+  "file": "/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV2.cpp"
 },
 {
-  "directory": "C:/Users/Utente/CLionProjects/ProgettoAlgoritmi/cmake-build-debug",
-  "command": "C:\\PROGRA~1\\JETBRA~1\\CLION2~1.1\\bin\\mingw\\bin\\G__~1.EXE -g -Wall -Wextra -Wvla -v -O3 -g -std=gnu++20 -o CMakeFiles\\alg_str_dati.dir\\MBaseSolverV3.cpp.obj -c C:\\Users\\Utente\\CLionProjects\\ProgettoAlgoritmi\\MBaseSolverV3.cpp",
-  "file": "C:\\Users\\Utente\\CLionProjects\\ProgettoAlgoritmi\\MBaseSolverV3.cpp"
+  "directory": "/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++    -g -fno-omit-frame-pointer -fsanitize=address -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk   -Wall -Wextra -Wvla -v -O3 -fsanitize=address -static-libsan -g -std=gnu++2a -o CMakeFiles/alg_str_dati.dir/MBaseSolverV3.cpp.o -c /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV3.cpp",
+  "file": "/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV3.cpp"
 },
 {
-  "directory": "C:/Users/Utente/CLionProjects/ProgettoAlgoritmi/cmake-build-debug",
-  "command": "C:\\PROGRA~1\\JETBRA~1\\CLION2~1.1\\bin\\mingw\\bin\\G__~1.EXE -g -Wall -Wextra -Wvla -v -O3 -g -std=gnu++20 -o CMakeFiles\\alg_str_dati.dir\\MBaseSolverV5.cpp.obj -c C:\\Users\\Utente\\CLionProjects\\ProgettoAlgoritmi\\MBaseSolverV5.cpp",
-  "file": "C:\\Users\\Utente\\CLionProjects\\ProgettoAlgoritmi\\MBaseSolverV5.cpp"
+  "directory": "/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++    -g -fno-omit-frame-pointer -fsanitize=address -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk   -Wall -Wextra -Wvla -v -O3 -fsanitize=address -static-libsan -g -std=gnu++2a -o CMakeFiles/alg_str_dati.dir/MBaseSolverV4.cpp.o -c /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV4.cpp",
+  "file": "/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV4.cpp"
 },
 {
-  "directory": "C:/Users/Utente/CLionProjects/ProgettoAlgoritmi/cmake-build-debug",
-  "command": "C:\\PROGRA~1\\JETBRA~1\\CLION2~1.1\\bin\\mingw\\bin\\G__~1.EXE -g -Wall -Wextra -Wvla -v -O3 -g -std=gnu++20 -o CMakeFiles\\alg_str_dati.dir\\MBaseSolverV6.cpp.obj -c C:\\Users\\Utente\\CLionProjects\\ProgettoAlgoritmi\\MBaseSolverV6.cpp",
-  "file": "C:\\Users\\Utente\\CLionProjects\\ProgettoAlgoritmi\\MBaseSolverV6.cpp"
+  "directory": "/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++    -g -fno-omit-frame-pointer -fsanitize=address -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk   -Wall -Wextra -Wvla -v -O3 -fsanitize=address -static-libsan -g -std=gnu++2a -o CMakeFiles/alg_str_dati.dir/MBaseSolverV5.cpp.o -c /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV5.cpp",
+  "file": "/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV5.cpp"
 },
 {
-  "directory": "C:/Users/Utente/CLionProjects/ProgettoAlgoritmi/cmake-build-debug",
-  "command": "C:\\PROGRA~1\\JETBRA~1\\CLION2~1.1\\bin\\mingw\\bin\\G__~1.EXE -g -Wall -Wextra -Wvla -v -O3 -g -std=gnu++20 -o CMakeFiles\\alg_str_dati.dir\\PreElaborator.cpp.obj -c C:\\Users\\Utente\\CLionProjects\\ProgettoAlgoritmi\\PreElaborator.cpp",
-  "file": "C:\\Users\\Utente\\CLionProjects\\ProgettoAlgoritmi\\PreElaborator.cpp"
+  "directory": "/Users/blasko/CLionProjects/ProgettoAlgoritmi/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++    -g -fno-omit-frame-pointer -fsanitize=address -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk   -Wall -Wextra -Wvla -v -O3 -fsanitize=address -static-libsan -g -std=gnu++2a -o CMakeFiles/alg_str_dati.dir/MBaseSolverV6.cpp.o -c /Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV6.cpp",
+  "file": "/Users/blasko/CLionProjects/ProgettoAlgoritmi/MBaseSolverV6.cpp"
 }
 ]
