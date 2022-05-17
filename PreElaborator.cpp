@@ -7,7 +7,7 @@
 void PreElaborator::clean(InputMatrix &matrix) {
     cleanRows(matrix);
     cleanCols(matrix);
-
+    cleanDuplicates(matrix);
 }
 
 void PreElaborator::cleanRows(InputMatrix &matrix) {
@@ -61,4 +61,32 @@ void PreElaborator::print(bool* boolP, int len) const{
         std::cout<<boolP[i];
     }
     std::cout<<std::endl;
+}
+
+void PreElaborator::cleanDuplicates(InputMatrix &matrix) {
+    for(int i=0; i<matrix.getColumnLength()-1; i++) {
+        auto actualColumn = matrix.getCol(i);
+        for(int j=i+1; j<matrix.getColumnLength(); j++){
+            auto cloneCandidate=matrix.getCol(j);
+            if(equals(actualColumn, cloneCandidate)){
+                matrix.joinColumn(i,j);
+                j--;
+            }
+
+        }
+        std::cout<<"Column "<<matrix.getLabels()[i].letter<<matrix.getLabels()[i].number;
+        for(auto val: matrix.getLabels()[i].copied){
+            std::cout<<" |"<<val.letter<<val.number;
+        }
+        std::cout<<std::endl;
+    }
+
+}
+
+bool PreElaborator::equals(std::vector<bool> vector1, std::vector<bool> vector2) {
+    for(int i=0; i<vector1.size(); i++){
+        if(vector1[i]!=vector2[i])
+            return false;
+    }
+    return true;
 }

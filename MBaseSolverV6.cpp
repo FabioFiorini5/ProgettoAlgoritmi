@@ -43,7 +43,7 @@ void MBaseSolverV6::solve(InputMatrix& input) {
             if(result==1){
                 mhss.push_back(candidate);
             }
-            else if(result==0&& i != columnSize - 1){
+            else if(result == 0 && i != columnSize - 1){// && canContinue(candidate, input.getRowLength())){
                 queue.push(candidate);
             }
             else
@@ -56,6 +56,7 @@ void MBaseSolverV6::solve(InputMatrix& input) {
     std::cout<<"______________________________________________" <<std::endl;
     std::cout<<"Numero di Iterazioni: "<<counter<<std::endl;
     std::cout<<"Risultati:" <<std::endl;
+    auto allMhss=extractMhss(mhss);
     for(auto vec:mhss){
         printVector(std::cout, vec, input);
     }
@@ -221,6 +222,41 @@ int MBaseSolverV6::getMin(const bool *pInt, int size) const {
             return i;
     }
     return 0;
+}
+
+bool MBaseSolverV6::canContinue(const bool *pBoolean, int length) const{
+    int count=0;
+    for(int i=0; i<columnSize; i++){
+        if(pBoolean[i])
+            count++;
+    }
+    return count<length;
+}
+
+void MBaseSolverV6::extractMhss(std::vector<bool *>mhss, InputMatrix& inputMatrix) {
+    //combinare ricorsivamente i vettori delle colonne
+
+    for(auto mhs:mhss){
+        auto mhsLabel=getLabels(mhs, inputMatrix);
+        for(auto lbl: mhsLabel){
+            for(auto copiedLbl: lbl.copied){
+                std::vector<InputMatrix::Label> vect;
+                vect.push_back()
+            }
+        }
+    }
+    //ordinare ogni singolo vettore internamente
+    //ordinare tutti i vettori
+}
+
+std::vector<InputMatrix::Label> MBaseSolverV6::getLabels(bool *pBoolean, InputMatrix& inputMatrix) {
+    std::vector<InputMatrix::Label> labels;
+    for(int i=0; i<columnSize; i++){
+        if(pBoolean[i]){
+            labels.push_back(inputMatrix.getLabels()[i]);
+        }
+    }
+    return labels;
 }
 
 

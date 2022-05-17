@@ -201,3 +201,37 @@ InputMatrix::Label *InputMatrix::getLabels() const {
     return labels;
 }
 
+void InputMatrix::joinColumn(int source, int copy) {
+    reduceColumnLength();
+    for(int i=0; i<rowLength; i++){
+        auto newRow=new bool[columnLength] ();
+        for(int j=0; j<copy; j++){
+            newRow[j]=matrix[i][j];
+        }
+        for(int j=copy; j<columnLength; j++){
+            newRow[j]=matrix[i][j+1];
+        }
+        delete matrix[i];
+
+        matrix[i]=newRow;
+    }
+
+    auto newLabels=new Label[columnLength]();
+    for(int j=0; j<copy; j++) {
+        newLabels[j].number = labels[j].number;
+        newLabels[j].letter = labels[j].letter;
+        newLabels[j].copied = labels[j].copied;
+        newLabels[j].index  = labels[j].index ;
+
+    }
+    for(int j=copy; j<columnLength; j++) {
+        newLabels[j].number = labels[j+1].number;
+        newLabels[j].letter = labels[j+1].letter;
+        newLabels[j].copied = labels[j+1].copied;
+        newLabels[j].index  = labels[j+1].index ;
+    }
+    newLabels[source].copied.push_back(labels[copy]);
+    delete[] labels;
+    labels=newLabels;
+}
+

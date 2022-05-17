@@ -18,6 +18,10 @@ private:
     bool isIncluded(const bool* mat_i, const bool* mat_j, int columnLength);
 
     void print(bool* boolP, int len) const;
+
+    void cleanDuplicates(InputMatrix &matrix);
+
+    bool equals(std::vector<bool> vector1, std::vector<bool> vector2);
 };
 
 

@@ -11,10 +11,13 @@
 #include <vector>
 
 class InputMatrix {
+
+public:
     using Label = struct _label {
         char letter;
         unsigned short number;
-
+        unsigned short index;
+        std::vector<_label> copied;
 
 
         int operator==(_label& other) const{
@@ -28,11 +31,7 @@ class InputMatrix {
                 return 1;
             return 0;
         }
-        _label& operator=(_label& other){
-            this->letter=other.letter;
-            this->number=other.number;
-            return *this;
-        }
+
     };
 public:
     explicit InputMatrix(const std::string& path);
@@ -57,6 +56,8 @@ public:
 
     void print() const;
 
+    void joinColumn(int source, int copy);
+
 private:
     void reduceColumnLength();
 
@@ -72,8 +73,6 @@ private:
     bool** matrix;
     int columnLength=0;
     int rowLength=0;
-
-
 
     Label* labels;
 

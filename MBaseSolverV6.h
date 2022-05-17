@@ -64,5 +64,11 @@ private:
     void printRepVector(std::ostream& ostream, const bool *pBoolean, int length) const;
 
     int getMin(const bool *pInt, int size) const;
+
+    [[nodiscard]] bool canContinue(const bool *pBoolean, int length) const;
+
+    std::vector<bool *> extractMhss(std::vector<bool *> vector1);
+
+    std::vector<InputMatrix::Label> getLabels(bool *pBoolean, InputMatrix& inputMatrix);
 };
 #endif //ALQWARITZMI_MBaseSolverV6_H
