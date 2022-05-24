@@ -79,6 +79,10 @@ private:
 
     std::vector<InputMatrix::Label> getLabels(bool *pBoolean, InputMatrix& inputMatrix);
 
+    void quickSort(std::vector<std::vector<InputMatrix::Label>>& vettoreFinale, int start, int end);
+
+    int partition(std::vector<std::vector<InputMatrix::Label>>& vettoreFinale, int start, int end);
+
     void extractMhs(bool* mhs, int pos_attuale,
                     std::vector<std::vector<InputMatrix::Label>> &vettoreFinale,
                     std::vector<InputMatrix::Label> &vettoreParziale,

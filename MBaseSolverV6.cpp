@@ -81,7 +81,9 @@ void MBaseSolverV6::solve(InputMatrix& input) {
             }
         }
     }
-    std::sort(vettoreFinale.begin(), vettoreFinale.end(),[](std::vector<InputMatrix::Label>& a, std::vector<InputMatrix::Label>& b){
+
+    quickSort(vettoreFinale, 0, vettoreFinale.size()-1);
+    /*std::sort(vettoreFinale.begin(), vettoreFinale.end(),[](std::vector<InputMatrix::Label>& a, std::vector<InputMatrix::Label>& b){
         if(a.size()<b.size()) return true;
         if(a.size()>b.size())  return false;
         for(int i=0; i<a.size(); i++){
@@ -101,6 +103,9 @@ void MBaseSolverV6::solve(InputMatrix& input) {
         std::cout << "}" << std::endl;
     }
 }
+
+
+
 
 void MBaseSolverV6::printVector(std::ostream &stream, const bool *pBoolean, InputMatrix matrix) const{
     stream<<"{";
@@ -315,6 +320,62 @@ std::vector<InputMatrix::Label> MBaseSolverV6::getLabels(bool *pBoolean, InputMa
         }
     }
     return labels;
+}
+
+
+int MBaseSolverV6::partition(std::vector<std::vector<InputMatrix::Label>> &vettoreFinale, int start, int end){
+
+    auto pivot = vettoreFinale[start];
+
+    int count = 0;
+    for (int i = start + 1; i <= end; i++) {
+        if (!compareMhs(pivot, vettoreFinale[i]))
+            count++;
+    }
+
+    // Giving pivot element its correct position
+    int pivotIndex = start + count;
+    std::swap(vettoreFinale[pivotIndex], vettoreFinale[start]);
+
+    // Sorting left and right parts of the pivot element
+    int i = start, j = end;
+
+    while (i < pivotIndex && j > pivotIndex) {
+        //se è uguale devo guardare il secondo elemento
+        while (compareMhs(vettoreFinale[i],vettoreFinale[pivotIndex])) {
+            i++;
+        }
+
+        while (compareMhs(vettoreFinale[pivotIndex], vettoreFinale[j])) {
+            j--;
+        }
+
+        if (i < pivotIndex && j > pivotIndex) {
+            std::swap(vettoreFinale[i++], vettoreFinale[j--]);
+        }
+    }
+
+    return pivotIndex;
+}
+
+bool MBaseSolverV6::compareMhs(std::vector<InputMatrix::Label> &a, std::vector<InputMatrix::Label> &b) {
+    if(a.size()<b.size()) return true;
+    if(a.size()>b.size())  return false;
+    for(unsigned long i=0; i<a.size(); i++){
+        if(a[i].index<b[i].index) return true;
+        if(a[i].index>b[i].index)  return false;
+    }
+    return false;
+}
+
+void MBaseSolverV6::quickSort(std::vector<std::vector<InputMatrix::Label>>& vettoreFinale, int start, int end){
+    if (start >= end)
+        return;
+
+    int p = partition(vettoreFinale, start, end);
+    quickSort(vettoreFinale, start, p - 1);
+
+    quickSort(vettoreFinale, p + 1, end);
 }
 
 

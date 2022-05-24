@@ -189,6 +189,7 @@ void InputMatrix::loadLabels(std::string& string) {
 
         std::string val=token.substr(parenthesisPosition, token.size() - parenthesisPosition - 1);
 
+        labels[i].index = i+1;
         labels[i].letter = val[0];
         labels[i].number = std::stoi(val.substr(1));
 
