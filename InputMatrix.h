@@ -20,7 +20,7 @@ public:
         std::vector<_label> copied;
 
     };
-public:
+
     explicit InputMatrix(const std::string& path);
 
     [[nodiscard]] int getColumnLength() const;
@@ -45,6 +45,12 @@ public:
 
     void joinColumn(int source, int copy);
 
+    [[nodiscard]] int getColumnLengthOriginal() const;
+
+    void setColumnLengthOriginal(int columnLengthOriginal);
+
+    void printJson();
+
 private:
     void reduceColumnLength();
 
@@ -61,9 +67,15 @@ private:
     int columnLength=0;
     int rowLength=0;
 
+    int columnLengthOriginal;
+
+private:
+
     Label* labels;
 
     void loadLabels(std::string& string);
+
+    int getMax(const bool *element, int size) const;
 };
 
 

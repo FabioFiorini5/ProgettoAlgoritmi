@@ -65,7 +65,7 @@ InputMatrix::InputMatrix() {
 InputMatrix::InputMatrix(const std::string& path) {
     std::ifstream infile(path);
     std::string line;
-    //std::cout << path << std::endl;
+    std::cout << path << std::endl;
     int row=0;
     int column=0;
     while (std::getline(infile, line))
@@ -76,7 +76,9 @@ InputMatrix::InputMatrix(const std::string& path) {
 
         column=(int)(line.size()-1)/2;
         row++;
+        std::cout<<"Here"<<std::endl;
     }
+    setColumnLengthOriginal(column);
     setColumnLength(column);
     setRowLength(row);
     matrix=new bool*[rowLength]();
@@ -100,7 +102,7 @@ InputMatrix::InputMatrix(const std::string& path) {
         }
         rowCount++;
     }
-    print();
+    printJson();
 }
 
 bool* InputMatrix::getRow(int rowNum) const{
@@ -189,13 +191,20 @@ void InputMatrix::loadLabels(std::string& string) {
 
         labels[i].letter = val[0];
         labels[i].number = std::stoi(val.substr(1));
-        labels[i].index = i;
+
         labels[i].copied.push_back(labels[i]);
         i++;
         string.erase(0, pos + delimiter.length());
     }
-    for(int j=0; j<i; j++){
-        std::cout<<labels[j].letter<<labels[j].number<<" ";
+
+    for(int j=0; j<columnLength; j++){
+        if(labels[j].index==0){
+            labels[j].index = j+1;
+            labels[j].letter = 'a';
+            labels[j].number = j+1;
+            labels[j].copied.push_back(labels[j]);
+        }
+        std::cout<<labels[j].letter<<labels[j].number<<" "<<labels[j].index<<", ";
     }
     std::cout<<std::endl;
 
@@ -237,5 +246,38 @@ void InputMatrix::joinColumn(int source, int copy) {
     newLabels[source].copied.push_back(labels[copy]);
     delete[] labels;
     labels=newLabels;
+}
+
+int InputMatrix::getColumnLengthOriginal() const {
+    return columnLengthOriginal;
+}
+
+void InputMatrix::setColumnLengthOriginal(int columnLengthOriginal) {
+    InputMatrix::columnLengthOriginal = columnLengthOriginal;
+}
+
+void InputMatrix::printJson() {
+    std::cout<<"{"<<std::endl;
+    std::cout<<"\t\"sets\": ["<<std::endl;
+    for(int i=0; i<rowLength; i++){
+        std::cout<<"\t\t[";
+        auto max=getMax(this->matrix[i], columnLength);
+        for(int j=0; j<=max; j++){
+            if(this->matrix[i][j])
+                std::cout<<j+1<<(j<max-1?",":"");
+        }
+        std::cout<<"]"<<(i<rowLength-1?",":"")<<std::endl;
+    }
+    std::cout<<"\t]"<<std::endl;
+    std::cout<<"}"<<std::endl;
+}
+
+int InputMatrix::getMax(const bool* element, int size) const {
+    int max=size;
+    do{
+        max--;
+    }
+    while(max>-1&&!element[max]);
+    return max;
 }
 

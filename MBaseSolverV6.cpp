@@ -7,11 +7,13 @@
 #include <vector>
 #include <iterator>
 
+bool compareMhs(std::vector<InputMatrix::Label> &vector, std::vector<InputMatrix::Label> &vector1);
+
 void MBaseSolverV6::solve(InputMatrix& input) {
     auto emptySet=new bool[columnSize]();
     std::queue<bool*> queue;
 
-    std::vector<bool*> mhss;
+    std::vector<Mhs> mhss;
     queue.push(emptySet);
     clock_t startTime = clock();
     long counter=0;
@@ -41,7 +43,7 @@ void MBaseSolverV6::solve(InputMatrix& input) {
             }
             int result= check(representativeVector, i, input);
             if(result==1){
-                mhss.push_back(candidate);
+                mhss.emplace_back(candidate, getMin(candidate, columnSize), getMax(candidate, columnSize)+1);
             }
             else if(result == 0 && i != columnSize - 1){// && canContinue(candidate, input.getRowLength())){
                 queue.push(candidate);
@@ -59,14 +61,25 @@ void MBaseSolverV6::solve(InputMatrix& input) {
 
 
     std::vector<std::vector<InputMatrix::Label>> vettoreFinale;
-    for(auto vec:mhss){
-        std::vector<InputMatrix::Label> vettoreParziale;
-        extractMhs(vec, 0, vettoreFinale, vettoreParziale, input);
+    std::vector<InputMatrix::Label> vettoreParziale;
+    for(auto& vec:mhss){
+        //printVector(std::cout, vec.mhs, input);
+        extractMhs(vec.mhs, 0, vettoreFinale, vettoreParziale, input);
+        vettoreParziale.clear();
     }
+
+    std::vector<InputMatrix::Label> toOrder(input.getColumnLengthOriginal());
     for(auto& vec:vettoreFinale) {
-        std::sort(vec.begin(), vec.end(), [](InputMatrix::Label &a, InputMatrix::Label &b) {
-            return a.index < b.index;
-        });
+        for(const auto& lbl: vec){
+            toOrder[lbl.index-1]=lbl;
+        }
+        vec.clear();
+        for(auto& lbl: toOrder){
+            if(lbl.index!=0){
+                vec.push_back(lbl);
+                lbl.index=0;
+            }
+        }
     }
     std::sort(vettoreFinale.begin(), vettoreFinale.end(),[](std::vector<InputMatrix::Label>& a, std::vector<InputMatrix::Label>& b){
         if(a.size()<b.size()) return true;
@@ -76,14 +89,16 @@ void MBaseSolverV6::solve(InputMatrix& input) {
             if(a[i].index>b[i].index)  return false;
         }
         return false;
-    });
-    for(auto vec:vettoreFinale){
+    });*/
+
+    for(auto& vec:vettoreFinale){
         std::cout << "{";
-        for(auto lbl:vec)
+        for(unsigned long i=0; i<vec.size(); i++)
         {
-            std::cout<<lbl.letter<<lbl.number<<", ";
+
+            std::cout<<vec[i].index<<"("<<vec[i].letter<<vec[i].number<<")"<<((i<vec.size()-1)?", ":"");
         }
-        std::cout << " }" << std::endl;
+        std::cout << "}" << std::endl;
     }
 }
 
@@ -101,6 +116,14 @@ void MBaseSolverV6::printVector(std::ostream &stream, const bool *pBoolean, Inpu
        // stream<<"]";
     }
     stream<<"}"<<std::endl;
+
+    for(int i=0; i  <columnSize; i++){
+        stream<<"[";
+        stream<<(pBoolean[i]?"1":"0");
+        stream<<"]";
+    }
+    std::cout<<std::endl;
+
 }
 
 
@@ -183,7 +206,7 @@ int MBaseSolverV6::getMax(const bool* element, int size) const {
 
 bool* MBaseSolverV6::getRepresentativeVector(const bool* pBoolean, const InputMatrix &inputMatrix) const{
     int size=inputMatrix.getRowLength();
-    auto column=new bool[columnSize]();
+    auto column=new bool[size]();
     auto min = getMin(pBoolean, columnSize);
     auto max = getMax(pBoolean, columnSize);
     for(int i=min; i<=max; i++){
@@ -200,7 +223,7 @@ bool* MBaseSolverV6::getRepresentativeVector(const bool* pBoolean, const InputMa
 
 bool* MBaseSolverV6::getRepresentativeVector(int index, const InputMatrix &inputMatrix) const{
     int size=inputMatrix.getRowLength();
-    auto column=new bool[columnSize]();
+    auto column=new bool[size]();
     for(int j=0; j<size; j++){
         column[j]=column[j]||inputMatrix.getValueAt(j,index);
 
@@ -212,13 +235,11 @@ signed char MBaseSolverV6::evaluateTruthMap(unsigned char contains0, unsigned ch
     return truthMap[(contains0<<3)+(contains1<<2)+(contains2<<1)+contains3];
 }
 
-bool MBaseSolverV6::containsMhs(const bool* candidate, const std::vector<bool*>& mhss) const{
+bool MBaseSolverV6::containsMhs(const bool* vector, const std::vector<Mhs> &mhss) const{
 
 
-    for(auto currentMhs:mhss){
-        int max= getMax(currentMhs, columnSize)+1;
-        int min= getMin(currentMhs, columnSize);
-        if(isSubset(currentMhs, candidate, max, min))
+    for(const auto& currentMhs:mhss){
+        if(isSubset(currentMhs.mhs, vector, currentMhs.max, currentMhs.min))
             return true;
     }
     return false;
@@ -259,8 +280,17 @@ bool MBaseSolverV6::canContinue(const bool *pBoolean, int length) const{
 }
 
 void MBaseSolverV6::extractMhs(bool* mhs, int pos_attuale, std::vector<std::vector<InputMatrix::Label>>& vettoreFinale, std::vector<InputMatrix::Label>& vettoreParziale, InputMatrix& inputMatrix) {
-    if (pos_attuale > getMax(mhs, columnSize)){
-        vettoreFinale.push_back(vettoreParziale);
+    if (pos_attuale > getMax(mhs, columnSize)||pos_attuale==columnSize-1){
+        if (mhs[pos_attuale] == 0) {
+            vettoreFinale.push_back(vettoreParziale);
+        }
+        if (mhs[pos_attuale] == 1){
+            for (unsigned long j = 0; j < inputMatrix.getLabels()[pos_attuale].copied.size(); j++) {
+                vettoreParziale.push_back(inputMatrix.getLabels()[pos_attuale].copied[j]);
+                vettoreFinale.push_back(vettoreParziale);
+                vettoreParziale.pop_back();
+            }
+        }
         return;
     }
     if (mhs[pos_attuale] == 0){
@@ -268,7 +298,7 @@ void MBaseSolverV6::extractMhs(bool* mhs, int pos_attuale, std::vector<std::vect
     }
 
     if (mhs[pos_attuale] == 1){
-        for (int j = 0; j < inputMatrix.getLabels()[pos_attuale].copied.size(); j++) {
+        for (unsigned long j = 0; j < inputMatrix.getLabels()[pos_attuale].copied.size(); j++) {
             vettoreParziale.push_back(inputMatrix.getLabels()[pos_attuale].copied[j]);
             extractMhs(mhs, pos_attuale + 1, vettoreFinale, vettoreParziale, inputMatrix);
             vettoreParziale.pop_back();

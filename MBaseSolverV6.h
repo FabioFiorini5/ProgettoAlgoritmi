@@ -11,6 +11,14 @@
 
 class MBaseSolverV6: public MinimumHittingSetSolver {
 public:
+
+    using Mhs = struct _mhs {
+        _mhs(bool *mhs, int min, int max) : mhs(mhs), min(min), max(max) {}
+
+        bool* mhs;
+        int min;
+        int max;
+    };
     
     MBaseSolverV6(int columnLength):columnSize(columnLength){ //c0,1,2,3 //da riguardare
         truthMap[0]=0;//0,0,0,0 caso non verificabile
@@ -55,7 +63,7 @@ private:
 
     signed char truthMap[16];
 
-    [[nodiscard]] bool containsMhs(const bool* vector, const std::vector<bool*>& mhss) const;
+    [[nodiscard]] bool containsMhs(const bool* vector, const std::vector<Mhs> &mhss) const;
 
     [[nodiscard]] bool isSubset(const bool* vector, const bool* vector1, int max, int min=0) const;
 
@@ -75,5 +83,7 @@ private:
                     std::vector<std::vector<InputMatrix::Label>> &vettoreFinale,
                     std::vector<InputMatrix::Label> &vettoreParziale,
                     InputMatrix& inputMatrix);
+
+    bool compareMhs(std::vector<InputMatrix::Label>& a, std::vector<InputMatrix::Label>& b);
 };
 #endif //ALQWARITZMI_MBaseSolverV6_H
