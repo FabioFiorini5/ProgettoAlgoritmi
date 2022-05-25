@@ -76,7 +76,6 @@ InputMatrix::InputMatrix(const std::string& path) {
 
         column=(int)(line.size()-1)/2;
         row++;
-        std::cout<<"Here"<<std::endl;
     }
     setColumnLengthOriginal(column);
     setColumnLength(column);

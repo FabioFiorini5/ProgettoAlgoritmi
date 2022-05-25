@@ -67,6 +67,7 @@ void MBaseSolverV6::solve(InputMatrix& input) {
         extractMhs(vec.mhs, 0, vettoreFinale, vettoreParziale, input);
         vettoreParziale.clear();
     }
+    mhss.clear();
 
     std::vector<InputMatrix::Label> toOrder(input.getColumnLengthOriginal());
     for(auto& vec:vettoreFinale) {
