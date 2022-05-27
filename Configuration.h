@@ -45,12 +45,12 @@ private:
         loadPath(outputFolderPath, "outputFolderPath");
     }
 
-    Configuration() {
+    Configuration() {// Constructor? (the {} brackets) are needed here.
         info=true;
         debug=true;
         error=true;
         out=true;
-    }                    // Constructor? (the {} brackets) are needed here.
+    }
 
     bool info, debug, error, out;
 

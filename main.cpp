@@ -6,6 +6,7 @@
 #include "MBaseSolverV5.h"
 #include "MBaseSolverV3.h"
 #include "Configuration.h"
+#include "Logger.h"
 
 #ifndef NDEBUG
 #define LOG_DEBUG printf /* cose */
@@ -36,10 +37,10 @@ int main(int argc, char *argv[]) {
                 clock_t startTime = clock();
                 std::cout << entry.path() << std::endl;
                 InputMatrix inputMatrix(entry.path());
-                std::cout<<"Inputmatrix prima: "<<std::endl;
+                Logger::getInstance().info("Before: ");
                 inputMatrix.print();
                 preElab.clean(inputMatrix);
-                std::cout<<"Inputmatrix dopo: "<<std::endl;
+                Logger::getInstance().info("After: ");
                 inputMatrix.print();
                 MBaseSolverV6 solver(inputMatrix.getColumnLength());
                 solver.solve(inputMatrix);

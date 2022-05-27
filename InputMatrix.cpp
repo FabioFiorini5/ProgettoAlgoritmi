@@ -3,6 +3,7 @@
 //
 
 #include "InputMatrix.h"
+#include "Logger.h"
 
 /**
  * Ritorna quanto è lunga una colonna, cioè il numero di righe
@@ -162,14 +163,14 @@ void InputMatrix::reduceRowLength(){
 
 void InputMatrix::print() const{
     for(int j=0; j<columnLength; j++){
-        std::cout<<labels[j].letter<<labels[j].number<<"|";
+        Logger::getInstance().out(labels[j].letter+ std::to_string(labels[j].number) +"|");
     }
-    std::cout<<std::endl;
+    Logger::getInstance().out("\n");
     for(int i=0; i<rowLength; i++){
         for(int j=0; j<columnLength; j++){
-            std::cout<<"["<<matrix[i][j]<<"]";
+            Logger::getInstance().out("["+std::to_string(matrix[i][j])+"]");
         }
-        std::cout<<std::endl;
+        Logger::getInstance().out("\n");
     }
 }
 
