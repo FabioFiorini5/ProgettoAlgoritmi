@@ -25,6 +25,21 @@ public:
                     std::vector<InputMatrix::Label> &vettoreParziale, InputMatrix &inputMatrix);
 
     std::vector<std::vector<InputMatrix::Label>> extractResults(std::vector<MBaseSolverV6::Mhs> &vector, InputMatrix &matrix);
+
+    void calculateExpectedResults(std::vector<MBaseSolverV6::Mhs> &vector, InputMatrix &matrix);
+
+    void clearCopied(std::vector<std::vector<InputMatrix::Label>>& mhss);
+
+    std::vector<std::vector<InputMatrix::Label>>
+    getCartesianMul(std::vector<MBaseSolverV6::Mhs> &vector, InputMatrix &matrix);
+
+    std::vector<InputMatrix::Label> convertMhs(MBaseSolverV6::_mhs &mhs, InputMatrix &matrix);
+
+    void doExtraction(std::vector<MBaseSolverV6::Mhs> &vector, InputMatrix &matrix);
+
+    void doCartesianMul(std::vector<MBaseSolverV6::Mhs> &mhss, InputMatrix &input);
+
+    void print(const std::vector<InputMatrix::Label> &vector, InputMatrix &matrix);
 };
 
 

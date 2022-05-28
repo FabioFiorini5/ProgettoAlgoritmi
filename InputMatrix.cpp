@@ -165,13 +165,20 @@ void InputMatrix::reduceRowLength(){
 }
 
 void InputMatrix::print(const std::function<void(const std::string&)>& printer) const{
+    std::string line;
     for(int j=0; j<columnLength; j++){
-        printer(labels[j].letter+ std::to_string(labels[j].number) +"|");
+        line.append(labels[j].letter+ std::to_string(labels[j].number) +"|");
     }
+    printer(line);
+    printer("\n");
+    line.clear();
     for(int i=0; i<rowLength; i++){
         for(int j=0; j<columnLength; j++){
-            printer("["+std::to_string(matrix[i][j])+"]");
+            line.append("["+std::to_string(matrix[i][j])+"]");
         }
+        printer(line);
+        printer("\n");
+        line.clear();
     }
 }
 

@@ -6,24 +6,13 @@
 #include "Logger.h"
 
 void ResultPrinter::printResults(std::vector<MBaseSolverV6::Mhs> &mhss, InputMatrix& input) {
-    Logger::logInfo("Start extracting results");
-    auto vettoreFinale=extractResults(mhss, input);
-    Logger::logInfo("Ended extraction");
-
-
-
-
-    for(auto& vec:vettoreFinale){
-        Logger::logOut("{");
-        for(unsigned long i=0; i<vec.size(); i++)
-        {
-
-            Logger::logOut(std::to_string(vec[i].index) + "(" + std::to_string(vec[i].letter) +std::to_string(vec[i].number)+")"+((i<vec.size()-1)?", ":""));
-        }
-        Logger::logOut("}");
-        Logger::logOut("\n");
+    if(Configuration::getInstance().isExtractionEnabled()){
+        doExtraction(mhss, input);
     }
-    Logger::logInfo("Printed results");
+    else{
+        doCartesianMul(mhss, input);
+    }
+
 
 
 }
@@ -113,6 +102,10 @@ void ResultPrinter::extractMhs(bool* mhs, int pos_attuale, std::vector<std::vect
 }
 
 std::vector<std::vector<InputMatrix::Label>> ResultPrinter::extractResults(std::vector<MBaseSolverV6::Mhs> &mhss, InputMatrix &input) {
+
+    if(Configuration::getInstance().isDebug()){
+        calculateExpectedResults(mhss, input);
+    }
     std::vector<std::vector<InputMatrix::Label>> vettoreFinale;
     std::vector<InputMatrix::Label> vettoreParziale;
     for(auto& vec:mhss){
@@ -121,7 +114,8 @@ std::vector<std::vector<InputMatrix::Label>> ResultPrinter::extractResults(std::
         vettoreParziale.clear();
     }
     mhss.clear();
-
+    clearCopied(vettoreFinale);
+    Logger::logDebug("Ended extraction, start sorting");
     std::vector<InputMatrix::Label> toOrder(input.getColumnLengthOriginal());
     for(auto& vec:vettoreFinale) {
         for(const auto& lbl: vec){
@@ -138,5 +132,102 @@ std::vector<std::vector<InputMatrix::Label>> ResultPrinter::extractResults(std::
 
 
     quickSort(vettoreFinale, 0, vettoreFinale.size()-1);
+
+    Logger::logDebug("Ended sorting");
     return vettoreFinale;
+}
+
+void ResultPrinter::calculateExpectedResults(std::vector<MBaseSolverV6::Mhs> &mhss, InputMatrix &inputMatrix) {
+    u_int64_t tot=0;
+    u_int64_t mhsTot;
+    for(const auto& mhs: mhss){
+        mhsTot=0;
+        for(int i=0; i<inputMatrix.getColumnLength(); i++){
+            if (mhs.mhs[i] == 1){
+                mhsTot=(mhsTot==0)?inputMatrix.getLabels()[i].copied.size():mhsTot*inputMatrix.getLabels()[i].copied.size();
+
+            }
+        }
+        tot+=mhsTot;
+    }
+    Logger::logDebug("Numero di MHS: "+std::to_string(tot));
+}
+
+void ResultPrinter::clearCopied(std::vector<std::vector<InputMatrix::Label>>& mhss) {
+    for(auto& mhs:mhss){
+        for(auto& el: mhs){
+            el.copied.clear();
+        }
+    }
+}
+
+std::vector<std::vector<InputMatrix::Label>>
+ResultPrinter::getCartesianMul(std::vector<MBaseSolverV6::Mhs> &mhss, InputMatrix &input) {
+    std::vector<std::vector<InputMatrix::Label>> toReturn;
+    for(auto& mhs:mhss){
+        auto labels=convertMhs(mhs, input);
+        toReturn.push_back(labels);
+    }
+    mhss.clear();
+
+    return toReturn;
+}
+
+std::vector<InputMatrix::Label>
+ResultPrinter::convertMhs(MBaseSolverV6::_mhs &mhs, InputMatrix &matrix) {
+
+    std::vector<InputMatrix::Label> labels;
+    for(int i=mhs.min; i<std::min(mhs.max+1, matrix.getColumnLength()); i++){
+        if(mhs.mhs[i]){
+            labels.emplace_back(matrix.getLabels()[i]);
+        }
+    }
+    return labels;
+}
+
+void ResultPrinter::doExtraction(std::vector<MBaseSolverV6::Mhs> &mhss, InputMatrix &input) {
+    Logger::logInfo("Start extracting results");
+    auto vettoreFinale=extractResults(mhss, input);
+    Logger::logInfo("Ended extraction");
+
+    for(auto& vec:vettoreFinale){
+        Logger::logOut("{");
+        for(unsigned long i=0; i<vec.size(); i++)
+        {
+
+            Logger::logOut(std::to_string(vec[i].index) + "(" + std::to_string(vec[i].letter) +std::to_string(vec[i].number)+")"+((i<vec.size()-1)?", ":""));
+        }
+        Logger::logOut("}");
+        Logger::logOut("\n");
+    }
+    Logger::logInfo("Printed results");
+}
+
+void ResultPrinter::doCartesianMul(std::vector<MBaseSolverV6::Mhs> &mhss, InputMatrix &input) {
+    Logger::logInfo("Start collecting results");
+    auto finalVec=getCartesianMul(mhss, input);
+    Logger::logInfo("Collected results, start printing");
+    for(const auto& vec:finalVec){
+        print(vec, input);
+    }
+
+}
+
+void ResultPrinter::print(const std::vector<InputMatrix::Label> &vector, InputMatrix &matrix) {
+    std::string mhs;
+    mhs.append("{");
+    for(int j=0; j<vector.size(); j++){
+        const auto& el=vector[j];
+        mhs.append("{");
+        for(int i=0; i<el.copied.size(); i++){
+            mhs.append(el.copied[i].toString());
+            if(i<el.copied.size()-1)
+                mhs.append(", ");
+        }
+        mhs.append("}");
+        if(j<vector.size()-1)
+            mhs.append(" X ");
+    }
+    mhs.append("}\n");
+    Logger::logOut(mhs);
 }

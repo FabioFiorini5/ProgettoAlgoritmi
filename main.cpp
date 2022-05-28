@@ -25,7 +25,9 @@ int main(int argc, char *argv[]) {
         std::cout<<"Inputmatrix dopo: "<<std::endl;
         inputMatrix.print(Logger::logDebug);
         MBaseSolverV6 solver(inputMatrix.getColumnLength());
-        solver.solve(inputMatrix);
+        auto results=solver.solve(inputMatrix);
+        ResultPrinter printer;
+        printer.printResults(results, inputMatrix);
     }
     else{
         if(std::strcmp(argv[1], "path")==0){
@@ -45,13 +47,12 @@ int main(int argc, char *argv[]) {
         else{
             clock_t startTime = clock();
             InputMatrix inputMatrix(argv[1]);
-            std::cout<<"Inputmatrix prima: "<<std::endl;
-            inputMatrix.print([](const std::string& x) -> void { Logger::getInstance().info(x);});
             preElab.clean(inputMatrix);
-            std::cout<<"Inputmatrix dopo: "<<std::endl;
             inputMatrix.print([](const std::string& x) -> void { Logger::getInstance().info(x);});
             MBaseSolverV6 solver(inputMatrix.getColumnLength());
-            solver.solve(inputMatrix);
+            auto results=solver.solve(inputMatrix);
+            ResultPrinter printer;
+            printer.printResults(results, inputMatrix);
             clock_t endTime = clock();
 
             clock_t clockTicksTaken = endTime - startTime;

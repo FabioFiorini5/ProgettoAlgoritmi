@@ -14,8 +14,7 @@ void PreElaborator::clean(InputMatrix &matrix) {
     Logger::logOut("%time%");
     Logger::logOut("Before pre-elaboration\n");
     matrix.print(Logger::logOut);
-
-
+    Logger::logOut("\n");
     cleanRows(matrix);
     Logger::logOut("After same rows deletion\n");
     matrix.print(Logger::logOut);

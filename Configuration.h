@@ -43,6 +43,7 @@ private:
     inline void loadPaths() {
         loadPath(inputFolderPath, "inputFolderPath");
         loadPath(outputFolderPath, "outputFolderPath");
+        loadPath(inputInstance, "inputInstance");
     }
 
     void inline loadOptimization() {
@@ -54,15 +55,22 @@ private:
 
     Configuration() {// Constructor? (the {} brackets) are needed here.
         info=true;
-        debug=true;
+        debug=false;
         error=true;
         out=true;
         optimization=3;
+        extraction=false;
+        timeout=180;
+        batchMode=false;
     }
 
     bool info, debug, error, out;
     int optimization;
+    bool extraction;
+    bool batchMode;
+    int timeout;
 
+    std::string inputInstance;
     std::string inputFolderPath;
     std::string outputFolderPath;
 
@@ -126,6 +134,10 @@ public:
 
     [[nodiscard]] inline int getOptimization() const {
         return optimization;
+    }
+
+    bool isExtractionEnabled() {
+        return extraction;
     }
 };
 

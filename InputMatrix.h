@@ -18,7 +18,10 @@ public:
         unsigned short number;
         unsigned short index;
         std::vector<_label> copied;
+        std::string toString() const {
 
+            return letter+std::to_string(number)+"("+std::to_string(index)+")";
+        }
     };
 
     explicit InputMatrix(const std::string& path);
