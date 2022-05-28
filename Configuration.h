@@ -45,14 +45,23 @@ private:
         loadPath(outputFolderPath, "outputFolderPath");
     }
 
+    void inline loadOptimization() {
+        auto it=properties.find("optimization");
+        if(it!=properties.end()){
+            optimization= std::stoi(it->second);
+        }
+    }
+
     Configuration() {// Constructor? (the {} brackets) are needed here.
         info=true;
         debug=true;
         error=true;
         out=true;
+        optimization=3;
     }
 
     bool info, debug, error, out;
+    int optimization;
 
     std::string inputFolderPath;
     std::string outputFolderPath;
@@ -79,7 +88,6 @@ public:
     void load(const std::string& configurationPath){
         std::ifstream infile(configurationPath);
         std::string line;
-        std::cout << configurationPath << std::endl;
         while (std::getline(infile, line)) {
             auto pos = line.find('=');
 
@@ -89,30 +97,35 @@ public:
         }
         loadLogLevels();
         loadPaths();
+        loadOptimization();
     }
 
-    [[nodiscard]] bool isInfo() const {
+    [[nodiscard]] inline bool isInfo() const {
         return info;
     }
 
-    [[nodiscard]] bool isDebug() const {
+    [[nodiscard]] inline bool isDebug() const {
         return debug;
     }
 
-    [[nodiscard]] bool isError() const {
+    [[nodiscard]] inline bool isError() const {
         return error;
     }
 
-    [[nodiscard]] bool isOut() const {
+    [[nodiscard]] inline bool isOut() const {
         return out;
     }
 
-    [[nodiscard]] const std::string &getInputFolderPath() const {
+    [[nodiscard]] inline const std::string &getInputFolderPath() const {
         return inputFolderPath;
     }
 
-    [[nodiscard]] const std::string &getOutputFolderPath() const {
+    [[nodiscard]] inline const std::string &getOutputFolderPath() const {
         return outputFolderPath;
+    }
+
+    [[nodiscard]] inline int getOptimization() const {
+        return optimization;
     }
 };
 

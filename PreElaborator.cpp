@@ -3,11 +3,36 @@
 //
 
 #include "PreElaborator.h"
+#include "Configuration.h"
+#include "Logger.h"
 
 void PreElaborator::clean(InputMatrix &matrix) {
+    auto optimization=Configuration::getInstance().getOptimization();
+    Logger::logDebug("Optimization level: "+std::to_string(optimization));
+    if(optimization==0)
+        return;
+    Logger::logOut("%time%");
+    Logger::logOut("Before pre-elaboration\n");
+    matrix.print(Logger::logOut);
+
+
     cleanRows(matrix);
+    Logger::logOut("After same rows deletion\n");
+    matrix.print(Logger::logOut);
+    Logger::logOut("%time%");
+    if(optimization==1)
+        return;
     cleanCols(matrix);
+    Logger::logOut("After empty columns deletion\n");
+    matrix.print(Logger::logOut);
+    Logger::logOut("%time%");
+    if(optimization==2)
+        return;
     cleanDuplicates(matrix);
+    Logger::logOut("After duplicates union\n");
+    matrix.print(Logger::logOut);
+    Logger::logOut("%time%");
+
 }
 
 void PreElaborator::cleanRows(InputMatrix &matrix) {
@@ -18,6 +43,7 @@ void PreElaborator::cleanRows(InputMatrix &matrix) {
                 matrix.removeRow(j);
         }
     }
+
 }
 
 void PreElaborator::cleanCols(InputMatrix &matrix) {
@@ -57,13 +83,16 @@ bool PreElaborator::isIncluded(const bool* mat_i, const bool* mat_j, int columnL
 
 
 void PreElaborator::print(bool* boolP, int len) const{
+    std::string line;
     for(int i=0; i<len; i++){
-        std::cout<<boolP[i];
+        line.append(std::to_string(boolP[i]));
     }
-    std::cout<<std::endl;
+    Logger::logDebug(line);
 }
 
 void PreElaborator::cleanDuplicates(InputMatrix &matrix) {
+
+    std::string line;
     for(int i=0; i<matrix.getColumnLength()-1; i++) {
         auto actualColumn = matrix.getCol(i);
         for(int j=i+1; j<matrix.getColumnLength(); j++){
@@ -74,11 +103,13 @@ void PreElaborator::cleanDuplicates(InputMatrix &matrix) {
             }
 
         }
-        std::cout<<"Column ";//<<matrix.getLabels()[i].letter<<matrix.getLabels()[i].number;
-        for(auto val: matrix.getLabels()[i].copied){
-            std::cout<<val.letter<<val.number<<" |";
+        line.append("Column ");//<<matrix.getLabels()[i].letter<<matrix.getLabels()[i].number;
+        for(const auto& val: matrix.getLabels()[i].copied){
+            line.append(std::to_string(val.letter)+std::to_string(val.number)+(" |"));
         }
-        std::cout<<std::endl;
+        line.append("\n");
+        Logger::logDebug(line);
+        line.clear();
     }
 
 }

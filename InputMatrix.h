@@ -41,7 +41,7 @@ public:
 
     void removeRow(int rowNum);
 
-    void print() const;
+    void print(const std::function<void(const std::string&)>& printer) const;
 
     void joinColumn(int source, int copy);
 
@@ -49,7 +49,7 @@ public:
 
     void setColumnLengthOriginal(int columnLengthOriginal);
 
-    void printJson();
+    void printJson(const std::function<void(const std::string&)>& printer);
 
 private:
     void reduceColumnLength();

@@ -2,6 +2,7 @@
 // Created by Blasko Racu on 19/09/21.
 //
 
+#include <sstream>
 #include "InputMatrix.h"
 #include "Logger.h"
 
@@ -102,7 +103,7 @@ InputMatrix::InputMatrix(const std::string& path) {
         }
         rowCount++;
     }
-    printJson();
+    printJson(Logger::logDebug);
 }
 
 bool* InputMatrix::getRow(int rowNum) const{
@@ -161,21 +162,21 @@ void InputMatrix::reduceRowLength(){
     rowLength--;
 }
 
-void InputMatrix::print() const{
+void InputMatrix::print(const std::function<void(const std::string&)>& printer) const{
     for(int j=0; j<columnLength; j++){
-        Logger::getInstance().out(labels[j].letter+ std::to_string(labels[j].number) +"|");
+        printer(labels[j].letter+ std::to_string(labels[j].number) +"|");
     }
-    Logger::getInstance().out("\n");
+    printer("\n");
     for(int i=0; i<rowLength; i++){
         for(int j=0; j<columnLength; j++){
-            Logger::getInstance().out("["+std::to_string(matrix[i][j])+"]");
+            printer("["+std::to_string(matrix[i][j])+"]");
         }
-        Logger::getInstance().out("\n");
+        printer("\n");
     }
 }
 
 void InputMatrix::loadLabels(std::string& string) {
-    std::cout<<string<<std::endl;
+    Logger::logDebug(string);
     labels=new Label [columnLength]();
     std::string delimiter = " ";
     string.erase(0, 8);
@@ -198,6 +199,7 @@ void InputMatrix::loadLabels(std::string& string) {
         string.erase(0, pos + delimiter.length());
     }
 
+    std::string line;
     for(int j=0; j<columnLength; j++){
         if(labels[j].index==0){
             labels[j].index = j+1;
@@ -205,9 +207,13 @@ void InputMatrix::loadLabels(std::string& string) {
             labels[j].number = j+1;
             labels[j].copied.push_back(labels[j]);
         }
-        std::cout<<labels[j].letter<<labels[j].number<<" "<<labels[j].index<<", ";
+        line.append(""+labels[j].letter);
+        line.append(std::to_string(labels[j].number));
+        line.append(" ");
+        line.append(std::to_string(labels[j].index));
+        line.append(", ");
     }
-    std::cout<<std::endl;
+    Logger::logDebug(line);
 
 }
 
@@ -257,7 +263,7 @@ void InputMatrix::setColumnLengthOriginal(int columnLengthOriginal) {
     InputMatrix::columnLengthOriginal = columnLengthOriginal;
 }
 
-void InputMatrix::printJson() {
+void InputMatrix::printJson(const std::function<void(const std::string&)>& printer) {
     std::cout<<"{"<<std::endl;
     std::cout<<"\t\"sets\": ["<<std::endl;
     for(int i=0; i<rowLength; i++){

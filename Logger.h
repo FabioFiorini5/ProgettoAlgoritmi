@@ -19,28 +19,36 @@ public:
             return instance;
         }
     private:
-    const std::string currentDateTime() {
-        time_t     now = time(0);
-        struct tm  tstruct;
-        char       buf[80];
-        tstruct = *localtime(&now);
-        // Visit http://en.cppreference.com/w/cpp/chrono/c/strftime
-        // for more information about date/time format
-        strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
+    inline const std::string currentDateTime() {
+        using namespace std::chrono;
+        auto timepoint = system_clock::now();
+        auto coarse = system_clock::to_time_t(timepoint);
+        auto fine = time_point_cast<std::chrono::milliseconds>(timepoint);
 
-        return buf;
+        char buffer[sizeof "9999-12-31 23:59:59.999"];
+        std::snprintf(buffer + std::strftime(buffer, sizeof buffer - 3,
+                                             "%F %T.", std::localtime(&coarse)),
+                      4, "%03lu", fine.time_since_epoch().count() % 1000);
+        return buffer;
     }
-    void newLog(const std::string &basicString, std::ofstream& ofstream, const char *string) {
+    inline void newLog(const std::string &basicString, std::ofstream& ofstream, const char *string) {
         if(ofstream.is_open())
             ofstream.close();
         ofstream.open(Configuration::getInstance().getOutputFolderPath()+basicString+string);
     }
 
-    void writeLog(const std::string &basicString){
-            if(logFileStream.is_open())
-                logFileStream.write(basicString.c_str(), basicString.length());
-        }
-        Logger() {}                    // Constructor? (the {} brackets) are needed here.
+    inline void writeLog(const std::string &basicString){
+        if(logFileStream.is_open())
+            logFileStream.write(basicString.c_str(), basicString.length());
+    }
+
+
+    inline void writeOut(const std::string &basicString){
+        if(outputFileStream.is_open())
+            outputFileStream.write(basicString.c_str(), basicString.length());
+    }
+
+    Logger() {}                    // Constructor? (the {} brackets) are needed here.
 
         std::ofstream outputFileStream;
         std::ofstream logFileStream;
@@ -61,7 +69,7 @@ public:
         // we don't want.
     void newInstance(const std::string& instanceName){
         newLog(instanceName, logFileStream, ".log");
-        newLog(instanceName, outputFileStream, ".log");
+        newLog(instanceName, outputFileStream, ".out");
     }
         Logger(Logger const&) = delete;
         void operator=(Logger const&)  = delete;
@@ -91,7 +99,7 @@ public:
      * @param string
      */
     inline void debug(const std::string& string){
-        if(Configuration::getInstance().isInfo()){
+        if(Configuration::getInstance().isDebug()){
             auto time=currentDateTime();
             auto log="DEBUG \t["+time+"] \t"+string;
             std::cout<<log<<std::endl;
@@ -104,7 +112,7 @@ public:
      * @param string
      */
     inline void error(const std::string& string){
-        if(Configuration::getInstance().isInfo()){
+        if(Configuration::getInstance().isError()){
             auto time=currentDateTime();
             auto log="ERROR \t["+time+"] \t"+string;
             std::cout<<log<<std::endl;
@@ -112,22 +120,58 @@ public:
         }
     }
 
-    /**
+/**
      * Used to print output if the channel is enabled
      * @param string
      */
     inline void out(const std::string& string){
+        if(std::strcmp("%time%", string.c_str())==0){
+            out("Current time: [ "+currentDateTime()+ " ]\n");
+            return;
+        }
+        writeOut(string);
         if(Configuration::getInstance().isOut()){
             if(strcmp(string.c_str(), "\n")==0){
                 std::cout<<std::endl;
             }
             else{
                 std::cout<<string;
-
             }
-            //writeOut
         }
     }
+    /**
+     * Used to print informations if the channel is enabled
+     * @param string
+     */
+    inline static void logInfo(const std::string& string){
+        getInstance().info(string);
+    }
+
+    /**
+     * Used to print debug informations if the channel is enabled
+     * @param string
+     */
+    inline static void logDebug(const std::string& string){
+        getInstance().debug(string);
+    }
+
+    /**
+     * Used to print errors informations if the channel is enabled
+     * @param string
+     */
+    inline static void logError(const std::string& string){
+        getInstance().error(string);
+    }
+
+    /**
+     * Used to print output if the channel is enabled
+     * @param string
+     */
+    inline static void logOut(const std::string& string){
+        getInstance().out(string);
+    }
+
+
 };
 
 
