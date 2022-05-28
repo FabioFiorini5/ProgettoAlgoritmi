@@ -136,6 +136,7 @@ std::vector<std::vector<InputMatrix::Label>> ResultPrinter::extractResults(std::
         }
     }
 
+
     quickSort(vettoreFinale, 0, vettoreFinale.size()-1);
     return vettoreFinale;
 }

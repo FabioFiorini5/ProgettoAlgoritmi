@@ -48,6 +48,8 @@ std::vector<MBaseSolverV6::Mhs> MBaseSolverV6::solve(InputMatrix& input) {
         delete[] representativeVector;
         delete[] current;
         queue.pop();
+
+
     }
     Logger::logOut("Iterations: "+std::to_string(counter));
     Logger::logInfo("End solver");
