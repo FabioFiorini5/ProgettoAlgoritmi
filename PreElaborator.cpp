@@ -107,7 +107,6 @@ void PreElaborator::cleanDuplicates(InputMatrix &matrix) {
         for(const auto& val: matrix.getLabels()[i].copied){
             line.append(std::to_string(val.letter)+std::to_string(val.number)+(" |"));
         }
-        line.append("\n");
         Logger::logDebug(line);
         line.clear();
     }

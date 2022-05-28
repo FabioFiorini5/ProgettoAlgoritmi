@@ -86,6 +86,9 @@ public:
      * @param string
      */
     inline void info(const std::string& string){
+        if(strcmp(string.c_str(), "\n")==0){
+            return;
+        }
         if(Configuration::getInstance().isInfo()){
             auto time=currentDateTime();
             auto log="INFO \t["+time+"] \t"+string;
@@ -99,6 +102,9 @@ public:
      * @param string
      */
     inline void debug(const std::string& string){
+        if(strcmp(string.c_str(), "\n")==0){
+            return;
+        }
         if(Configuration::getInstance().isDebug()){
             auto time=currentDateTime();
             auto log="DEBUG \t["+time+"] \t"+string;
@@ -112,6 +118,9 @@ public:
      * @param string
      */
     inline void error(const std::string& string){
+        if(strcmp(string.c_str(), "\n")==0){
+            return;
+        }
         if(Configuration::getInstance().isError()){
             auto time=currentDateTime();
             auto log="ERROR \t["+time+"] \t"+string;

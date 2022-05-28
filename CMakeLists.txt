@@ -8,7 +8,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set (CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fno-omit-frame-pointer -fsanitize=address")
 set (CMAKE_LINKER_FLAGS_DEBUG "${CMAKE_LINKER_FLAGS_DEBUG} -fno-omit-frame-pointer -fsanitize=address")
 
-add_compile_options(-Wall -Wextra -Wvla -v -O3 -fsanitize=address -static-libsan -g)
+add_compile_options(-Wall -Wextra -Wvla -g -v -O3 -fsanitize=address -static-libsan )
 
 add_executable(alg_str_dati main.cpp
         MinimumHittingSetSolver.h
@@ -20,8 +20,6 @@ add_executable(alg_str_dati main.cpp
         MBaseSolverV2.h
         MBaseSolverV3.cpp
         MBaseSolverV3.h
-        MBaseSolverV4.cpp
-        MBaseSolverV4.h
         MBaseSolverV5.cpp
         MBaseSolverV5.h
         MBaseSolverV6.cpp

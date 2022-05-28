@@ -166,12 +166,10 @@ void InputMatrix::print(const std::function<void(const std::string&)>& printer) 
     for(int j=0; j<columnLength; j++){
         printer(labels[j].letter+ std::to_string(labels[j].number) +"|");
     }
-    printer("\n");
     for(int i=0; i<rowLength; i++){
         for(int j=0; j<columnLength; j++){
             printer("["+std::to_string(matrix[i][j])+"]");
         }
-        printer("\n");
     }
 }
 
@@ -207,7 +205,7 @@ void InputMatrix::loadLabels(std::string& string) {
             labels[j].number = j+1;
             labels[j].copied.push_back(labels[j]);
         }
-        line.append(""+labels[j].letter);
+        line.append(std::to_string(labels[j].letter));
         line.append(std::to_string(labels[j].number));
         line.append(" ");
         line.append(std::to_string(labels[j].index));
