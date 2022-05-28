@@ -4,28 +4,22 @@
 #include <queue>
 #include <iostream>
 #include "MBaseSolverV6.h"
+#include "Logger.h"
 #include <vector>
 #include <iterator>
 
-bool compareMhs(std::vector<InputMatrix::Label> &vector, std::vector<InputMatrix::Label> &vector1);
 
-void MBaseSolverV6::solve(InputMatrix& input) {
+std::vector<MBaseSolverV6::Mhs> MBaseSolverV6::solve(InputMatrix& input) {
+    Logger::logInfo("Start solving");
     auto emptySet=new bool[columnSize]();
     std::queue<bool*> queue;
 
     std::vector<Mhs> mhss;
     queue.push(emptySet);
-    clock_t startTime = clock();
-    long counter=0;
+    u_int64_t counter=0;
 
     while(!queue.empty()){
-        if(counter%1000000==0){
-            clock_t endTime = clock();
-            clock_t clockTicksTaken = endTime - startTime;
-            double timeInSeconds = clockTicksTaken / (double) CLOCKS_PER_SEC;
-            std::cout<<timeInSeconds<<std::endl;
-            startTime=clock();
-        }
+
 
         counter++;
 
@@ -55,54 +49,11 @@ void MBaseSolverV6::solve(InputMatrix& input) {
         delete[] current;
         queue.pop();
     }
-    std::cout<<"______________________________________________" <<std::endl;
-    std::cout<<"Numero di Iterazioni: "<<counter<<std::endl;
-    std::cout<<"Risultati:" <<std::endl;
+    Logger::logOut("Iterations: "+std::to_string(counter));
+    Logger::logInfo("End solver");
 
+    return mhss;
 
-    std::vector<std::vector<InputMatrix::Label>> vettoreFinale;
-    std::vector<InputMatrix::Label> vettoreParziale;
-    for(auto& vec:mhss){
-        //printVector(std::cout, vec.mhs, input);
-        extractMhs(vec.mhs, 0, vettoreFinale, vettoreParziale, input);
-        vettoreParziale.clear();
-    }
-    mhss.clear();
-
-    std::vector<InputMatrix::Label> toOrder(input.getColumnLengthOriginal());
-    for(auto& vec:vettoreFinale) {
-        for(const auto& lbl: vec){
-            toOrder[lbl.index-1]=lbl;
-        }
-        vec.clear();
-        for(auto& lbl: toOrder){
-            if(lbl.index!=0){
-                vec.push_back(lbl);
-                lbl.index=0;
-            }
-        }
-    }
-
-    quickSort(vettoreFinale, 0, vettoreFinale.size()-1);
-    /*std::sort(vettoreFinale.begin(), vettoreFinale.end(),[](std::vector<InputMatrix::Label>& a, std::vector<InputMatrix::Label>& b){
-        if(a.size()<b.size()) return true;
-        if(a.size()>b.size())  return false;
-        for(int i=0; i<a.size(); i++){
-            if(a[i].index<b[i].index) return true;
-            if(a[i].index>b[i].index)  return false;
-        }
-        return false;
-    });*/
-
-    for(auto& vec:vettoreFinale){
-        std::cout << "{";
-        for(unsigned long i=0; i<vec.size(); i++)
-        {
-
-            std::cout<<vec[i].index<<"("<<vec[i].letter<<vec[i].number<<")"<<((i<vec.size()-1)?", ":"");
-        }
-        std::cout << "}" << std::endl;
-    }
 }
 
 
@@ -151,7 +102,7 @@ int MBaseSolverV6::check(const bool* pBoolean, int toAdd, const InputMatrix& inp
     int size=inputMatrix.getRowLength();
     auto other=getRepresentativeVector(toAdd, inputMatrix);
 
-    //printRepVector(std::cout, other, inputMatrix.getRowLength());
+    printRepVector(other, inputMatrix.getRowLength());
     auto unionVector= new int[size]();
 
     for(int i=0; i<size; i++)
@@ -201,14 +152,7 @@ int MBaseSolverV6::getSuccessor(int val, int other) const {
         other;
 }
 
-int MBaseSolverV6::getMax(const bool* element, int size) const {
-    int max=size;
-    do{
-        max--;
-    }
-    while(max>-1&&!element[max]);
-    return max;
-}
+
 
 bool* MBaseSolverV6::getRepresentativeVector(const bool* pBoolean, const InputMatrix &inputMatrix) const{
     int size=inputMatrix.getRowLength();
@@ -259,22 +203,17 @@ bool MBaseSolverV6::isSubset(const bool* mhs, const bool* candidate, int max, in
     return true;
 }
 
-void MBaseSolverV6::printRepVector(std::ostream& stream, const bool *pBoolean, int length) const {
+void MBaseSolverV6::printRepVector(const bool *pBoolean, int length) const {
+    std::string line;
     for(int i=0; i < length; i++){
-        stream<<"[";
-        stream<<(pBoolean[i]?"1":"0");
-        stream<<"]";
+        line.append("[");
+        line.append((pBoolean[i]?"1":"0"));
+        line.append("]");
     }
-    stream<<std::endl;
+    Logger::logDebug(line);
 }
 
-int MBaseSolverV6::getMin(const bool *pInt, int size) const {
-    for(int i=0; i<size; i++){
-        if(pInt[i])
-            return i;
-    }
-    return 0;
-}
+
 
 bool MBaseSolverV6::canContinue(const bool *pBoolean, int length) const{
     int count=0;
@@ -285,33 +224,7 @@ bool MBaseSolverV6::canContinue(const bool *pBoolean, int length) const{
     return count<length;
 }
 
-void MBaseSolverV6::extractMhs(bool* mhs, int pos_attuale, std::vector<std::vector<InputMatrix::Label>>& vettoreFinale, std::vector<InputMatrix::Label>& vettoreParziale, InputMatrix& inputMatrix) {
-    if (pos_attuale > getMax(mhs, columnSize)||pos_attuale==columnSize-1){
-        if (mhs[pos_attuale] == 0) {
-            vettoreFinale.push_back(vettoreParziale);
-        }
-        if (mhs[pos_attuale] == 1){
-            for (unsigned long j = 0; j < inputMatrix.getLabels()[pos_attuale].copied.size(); j++) {
-                vettoreParziale.push_back(inputMatrix.getLabels()[pos_attuale].copied[j]);
-                vettoreFinale.push_back(vettoreParziale);
-                vettoreParziale.pop_back();
-            }
-        }
-        return;
-    }
-    if (mhs[pos_attuale] == 0){
-        extractMhs(mhs, pos_attuale + 1, vettoreFinale, vettoreParziale, inputMatrix);
-    }
 
-    if (mhs[pos_attuale] == 1){
-        for (unsigned long j = 0; j < inputMatrix.getLabels()[pos_attuale].copied.size(); j++) {
-            vettoreParziale.push_back(inputMatrix.getLabels()[pos_attuale].copied[j]);
-            extractMhs(mhs, pos_attuale + 1, vettoreFinale, vettoreParziale, inputMatrix);
-            vettoreParziale.pop_back();
-        }
-    }
-
-}
 
 std::vector<InputMatrix::Label> MBaseSolverV6::getLabels(bool *pBoolean, InputMatrix& inputMatrix) {
     std::vector<InputMatrix::Label> labels;
@@ -324,60 +237,6 @@ std::vector<InputMatrix::Label> MBaseSolverV6::getLabels(bool *pBoolean, InputMa
 }
 
 
-int MBaseSolverV6::partition(std::vector<std::vector<InputMatrix::Label>> &vettoreFinale, int start, int end){
-
-    auto pivot = vettoreFinale[start];
-
-    int count = 0;
-    for (int i = start + 1; i <= end; i++) {
-        if (!compareMhs(pivot, vettoreFinale[i]))
-            count++;
-    }
-
-    // Giving pivot element its correct position
-    int pivotIndex = start + count;
-    std::swap(vettoreFinale[pivotIndex], vettoreFinale[start]);
-
-    // Sorting left and right parts of the pivot element
-    int i = start, j = end;
-
-    while (i < pivotIndex && j > pivotIndex) {
-        //se è uguale devo guardare il secondo elemento
-        while (compareMhs(vettoreFinale[i],vettoreFinale[pivotIndex])) {
-            i++;
-        }
-
-        while (compareMhs(vettoreFinale[pivotIndex], vettoreFinale[j])) {
-            j--;
-        }
-
-        if (i < pivotIndex && j > pivotIndex) {
-            std::swap(vettoreFinale[i++], vettoreFinale[j--]);
-        }
-    }
-
-    return pivotIndex;
-}
-
-bool MBaseSolverV6::compareMhs(std::vector<InputMatrix::Label> &a, std::vector<InputMatrix::Label> &b) {
-    if(a.size()<b.size()) return true;
-    if(a.size()>b.size())  return false;
-    for(unsigned long i=0; i<a.size(); i++){
-        if(a[i].index<b[i].index) return true;
-        if(a[i].index>b[i].index)  return false;
-    }
-    return false;
-}
-
-void MBaseSolverV6::quickSort(std::vector<std::vector<InputMatrix::Label>>& vettoreFinale, int start, int end){
-    if (start >= end)
-        return;
-
-    int p = partition(vettoreFinale, start, end);
-    quickSort(vettoreFinale, start, p - 1);
-
-    quickSort(vettoreFinale, p + 1, end);
-}
 
 
 

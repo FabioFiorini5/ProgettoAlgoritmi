@@ -8,8 +8,9 @@
 
 #include "MinimumHittingSetSolver.h"
 #include <vector>
+#include "Utility.h"
 
-class MBaseSolverV6: public MinimumHittingSetSolver {
+class MBaseSolverV6 {
 public:
 
     using Mhs = struct _mhs {
@@ -41,15 +42,13 @@ public:
 
     virtual ~MBaseSolverV6()=default;
 
-    void solve(InputMatrix& input) override;
+    std::vector<Mhs> solve(InputMatrix& input);
 
 private:
 
     int check(const bool* pBoolean, int matrix, const InputMatrix& inputMatrix) const;
 
     [[nodiscard]] int getSuccessor(int val, int other) const;
-
-    [[nodiscard]] int getMax(const bool* element, int size) const;
 
     [[nodiscard]] bool* getRepresentativeVector(const bool* pBoolean, const InputMatrix &matrix) const;
 
@@ -69,25 +68,14 @@ private:
 
     int columnSize;
 
-    void printRepVector(std::ostream& ostream, const bool *pBoolean, int length) const;
+    void printRepVector(const bool *pBoolean, int length) const;
 
-    int getMin(const bool *pInt, int size) const;
 
     [[nodiscard]] bool canContinue(const bool *pBoolean, int length) const;
 
-    //std::vector<bool *> extractMhss(std::vector<bool *> vector1);
 
     std::vector<InputMatrix::Label> getLabels(bool *pBoolean, InputMatrix& inputMatrix);
 
-    void quickSort(std::vector<std::vector<InputMatrix::Label>>& vettoreFinale, int start, int end);
 
-    int partition(std::vector<std::vector<InputMatrix::Label>>& vettoreFinale, int start, int end);
-
-    void extractMhs(bool* mhs, int pos_attuale,
-                    std::vector<std::vector<InputMatrix::Label>> &vettoreFinale,
-                    std::vector<InputMatrix::Label> &vettoreParziale,
-                    InputMatrix& inputMatrix);
-
-    bool compareMhs(std::vector<InputMatrix::Label>& a, std::vector<InputMatrix::Label>& b);
 };
 #endif //ALQWARITZMI_MBaseSolverV6_H

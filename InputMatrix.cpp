@@ -65,6 +65,7 @@ InputMatrix::InputMatrix() {
  * @param path std::string
  */
 InputMatrix::InputMatrix(const std::string& path) {
+    Logger::logInfo("Loading file");
     std::ifstream infile(path);
     std::string line;
     std::cout << path << std::endl;
@@ -104,6 +105,7 @@ InputMatrix::InputMatrix(const std::string& path) {
         rowCount++;
     }
     printJson(Logger::logDebug);
+    Logger::logInfo("Loaded!");
 }
 
 bool* InputMatrix::getRow(int rowNum) const{
@@ -262,19 +264,29 @@ void InputMatrix::setColumnLengthOriginal(int columnLengthOriginal) {
 }
 
 void InputMatrix::printJson(const std::function<void(const std::string&)>& printer) {
-    std::cout<<"{"<<std::endl;
-    std::cout<<"\t\"sets\": ["<<std::endl;
+    printer("{");
+    printer("\n");
+    printer("\t\"sets\": [");
+    printer("\n");
     for(int i=0; i<rowLength; i++){
-        std::cout<<"\t\t[";
         auto max=getMax(this->matrix[i], columnLength);
+        std::string line;
+        line.append("\t\t[");
         for(int j=0; j<=max; j++){
-            if(this->matrix[i][j])
-                std::cout<<j+1<<(j<max-1?",":"");
+            if(this->matrix[i][j]){
+                line.append(std::to_string(j+1));
+                line.append(j<max-1?",":"");
+            }
         }
-        std::cout<<"]"<<(i<rowLength-1?",":"")<<std::endl;
+        line.append("]");
+        line.append((i<rowLength-1?",":""));
+        printer(line);
+        printer("\n");
     }
-    std::cout<<"\t]"<<std::endl;
-    std::cout<<"}"<<std::endl;
+    printer("\t]");
+    printer("\n");
+    printer("}");
+    printer("\n");
 }
 
 int InputMatrix::getMax(const bool* element, int size) const {
