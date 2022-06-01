@@ -4,6 +4,8 @@
 #include "Configuration.h"
 #include "Logger.h"
 #include "ResultPrinter.h"
+#include <future>
+#include <vector>
 
 #ifndef NDEBUG
 #define LOG_DEBUG printf /* cose */
@@ -11,40 +13,55 @@
 #define LOG_DEBUG
 #endif
 
-int main(int argc, char *argv[]) {
+std::vector<MBaseSolverV6::Mhs> solverino(InputMatrix& input){
+    MBaseSolverV6 solver(input.getColumnLength());
+    auto results = solver.solve(input);
+    return results;
+}
 
-
-
+void ExcecutorInstances(){
     PreElaborator preElab;
-
-    if(argc<=1){//base test
-        InputMatrix inputMatrix;
-        std::cout<<"Inputmatrix prima: "<<std::endl;
-        inputMatrix.print(Logger::logDebug);
+    for (const auto & entry : std::filesystem::directory_iterator(Configuration::getInstance().getInputFolderPath())){
+        std::cout<<"Currently evaluating "<< entry.path().filename() << std::endl;
+        Logger::getInstance().newInstance(entry.path().filename());
+        Logger::logInfo(entry.path().filename());
+        InputMatrix inputMatrix(entry.path());
         preElab.clean(inputMatrix);
-        std::cout<<"Inputmatrix dopo: "<<std::endl;
-        inputMatrix.print(Logger::logDebug);
-        MBaseSolverV6 solver(inputMatrix.getColumnLength());
-        auto results=solver.solve(inputMatrix);
+        //MBaseSolverV6 solver(inputMatrix.getColumnLength());
+        auto results = std::async(&solverino, inputMatrix );
+
+
         ResultPrinter printer;
         printer.printResults(results, inputMatrix);
-    }
-    else{
-        if(std::strcmp(argv[1], "path")==0){
-            Configuration::getInstance().load(argv[2]);
-            for (const auto & entry : std::filesystem::directory_iterator(Configuration::getInstance().getInputFolderPath())){
-                Logger::getInstance().newInstance(entry.path().filename());
-                Logger::logInfo(entry.path().filename());
+        Configuration::getInstance().setStopThreadSolver(false);
 
-                InputMatrix inputMatrix(entry.path());
-                preElab.clean(inputMatrix);
-                MBaseSolverV6 solver(inputMatrix.getColumnLength());
-                auto results=solver.solve(inputMatrix);
-                ResultPrinter printer;
-                printer.printResults(results, inputMatrix);
-            }
+        if(Configuration::getInstance().getStopThreadInstances()){
+            break;
         }
-        else{
+    }
+
+}
+
+int main(int argc, char *argv[]) {
+
+    Configuration::getInstance().load(argv[2]);
+    Configuration::getInstance().setStopThreadInstances(false);
+    Configuration::getInstance().setStopThreadSolver(false);
+    std::thread(ExecutorInstances);
+
+    int c;
+
+    std::cout<<"Premi 1 per terminare l'esecuzione, 2 per saltare l'istanza"<<std::endl;
+
+    std::cin >> c;
+    if (c == 1){
+        Configuration::getInstance().setStopThreadInstances(true);
+    }
+    if(c == 2){
+        Configuration::getInstance().setStopThreadSolver(true);
+    }
+    /*
+    else{
             clock_t startTime = clock();
             InputMatrix inputMatrix(argv[1]);
             preElab.clean(inputMatrix);
@@ -60,9 +77,6 @@ int main(int argc, char *argv[]) {
             std::cout<<"Elapsed time: "<<timeInSeconds<<std::endl;
         }
 
-    }
-
-
+*/
     return 0;
 }
-

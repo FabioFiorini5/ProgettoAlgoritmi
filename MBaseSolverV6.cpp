@@ -49,6 +49,11 @@ std::vector<MBaseSolverV6::Mhs> MBaseSolverV6::solve(InputMatrix& input) {
         delete[] current;
         queue.pop();
 
+        if(Configuration::getInstance().getStopThreadInstances() || Configuration::getInstance().getStopThreadSolver()){
+            Logger::logOut("\n\nExecution Interrupted\n\n");
+            break;
+        }
+
 
     }
     Logger::logOut("Iterations: "+std::to_string(counter));

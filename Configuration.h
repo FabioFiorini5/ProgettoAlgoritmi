@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <unordered_map>
+#include <future>
 
 #ifndef ALG_ConfigurationTR_DATI_CONFIGURATION_H
 #define ALG_ConfigurationTR_DATI_CONFIGURATION_H
@@ -76,8 +77,24 @@ private:
 
 
     std::unordered_map<std::string, std::string> properties;
+    std::atomic_bool stop_thread_instances;
+    std::atomic_bool stop_thread_solver;
 
+public:
+    inline bool getStopThreadInstances() const {
+        return stop_thread_instances.load(std::memory_order_acquire);
+    }
 
+    inline bool getStopThreadSolver() const {
+        return stop_thread_solver.load(std::memory_order_acquire);
+    }
+    inline void setStopThreadInstances(const bool stopThreadInstances) {
+        stop_thread_instances.store(stopThreadInstances, std::memory_order_release);
+    }
+
+    inline void setStopThreadSolver(const bool stopThreadSolver) {
+        stop_thread_solver.store(stopThreadSolver, std::memory_order_release);
+    }
     // C++ 11
     // =======
     // We can use the better technique of deleting the methods
@@ -139,6 +156,7 @@ public:
     bool isExtractionEnabled() {
         return extraction;
     }
+
 };
 
 #endif //ALG_ConfigurationTR_DATI_CONFIGURATION_H
