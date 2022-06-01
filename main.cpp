@@ -13,22 +13,15 @@
 #define LOG_DEBUG
 #endif
 
-std::vector<MBaseSolverV6::Mhs> solverino(InputMatrix& input){
-    MBaseSolverV6 solver(input.getColumnLength());
-    auto results = solver.solve(input);
-    return results;
-}
-
-void ExcecutorInstances(){
+void run(){
     PreElaborator preElab;
     for (const auto & entry : std::filesystem::directory_iterator(Configuration::getInstance().getInputFolderPath())){
-        std::cout<<"Currently evaluating "<< entry.path().filename() << std::endl;
         Logger::getInstance().newInstance(entry.path().filename());
         Logger::logInfo(entry.path().filename());
         InputMatrix inputMatrix(entry.path());
         preElab.clean(inputMatrix);
-        //MBaseSolverV6 solver(inputMatrix.getColumnLength());
-        auto results = std::async(&solverino, inputMatrix );
+        MBaseSolverV6 solver(inputMatrix.getColumnLength());
+        auto results = solver.solve(inputMatrix);
 
 
         ResultPrinter printer;
@@ -44,22 +37,25 @@ void ExcecutorInstances(){
 
 int main(int argc, char *argv[]) {
 
-    Configuration::getInstance().load(argv[2]);
+    if(argc>1)
+        Configuration::getInstance().load(argv[1]);
     Configuration::getInstance().setStopThreadInstances(false);
     Configuration::getInstance().setStopThreadSolver(false);
-    std::thread(ExecutorInstances);
+    std::thread executor(&run);
 
-    int c;
+    int c=0;
+    while(c!=1){
+        std::cout<<"Premi 1 per terminare l'esecuzione, 2 per saltare l'istanza"<<std::endl;
 
-    std::cout<<"Premi 1 per terminare l'esecuzione, 2 per saltare l'istanza"<<std::endl;
-
-    std::cin >> c;
-    if (c == 1){
-        Configuration::getInstance().setStopThreadInstances(true);
+        std::cin >> c;
+        if (c == 1){
+            Configuration::getInstance().setStopThreadInstances(true);
+        }
+        if(c == 2){
+            Configuration::getInstance().setStopThreadSolver(true);
+        }
     }
-    if(c == 2){
-        Configuration::getInstance().setStopThreadSolver(true);
-    }
+    executor.join();
     /*
     else{
             clock_t startTime = clock();
