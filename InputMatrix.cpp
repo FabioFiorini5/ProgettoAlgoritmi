@@ -129,7 +129,7 @@ void InputMatrix::removeColumn(int colNum){
         for(int j=colNum; j<columnLength; j++){
             newRow[j]=matrix[i][j+1];
         }
-        delete matrix[i];
+        delete[] matrix[i];
 
         matrix[i]=newRow;
     }
@@ -153,7 +153,7 @@ void InputMatrix::removeRow(int rowNum){
             matrix[i][j]=matrix[i+1][j];
         }
     }
-    delete matrix[rowLength];
+    delete[] matrix[rowLength];
 }
 
 void InputMatrix::reduceColumnLength(){
@@ -238,7 +238,7 @@ void InputMatrix::joinColumn(int source, int copy) {
         for(int j=copy; j<columnLength; j++){
             newRow[j]=matrix[i][j+1];
         }
-        delete matrix[i];
+        delete[] matrix[i];
 
         matrix[i]=newRow;
     }
@@ -310,5 +310,7 @@ InputMatrix::~InputMatrix() {
         delete[] matrix[i];
     }
     delete[] matrix;
+
+    delete[] labels;
 }
 

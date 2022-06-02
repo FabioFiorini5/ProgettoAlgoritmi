@@ -74,8 +74,6 @@ private:
 
     int columnLengthOriginal;
 
-private:
-
     Label* labels;
 
     void loadLabels(std::string& string);

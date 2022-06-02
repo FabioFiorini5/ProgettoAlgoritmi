@@ -21,10 +21,10 @@ void timeout(){
     int timeout=Configuration::getInstance().getTimeout();
     int i=0;
     while(!Configuration::getInstance().getStopThreadSolver()&&i<timeout){
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
         i++;
     }
-    if(i>=timeout)
+    if(i>=timeout*10)
     {
         Logger::logInfo("Timeout reached");
         Logger::logOut("Timeout reached");
