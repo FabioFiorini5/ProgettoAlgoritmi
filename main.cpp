@@ -6,6 +6,12 @@
 #include "ResultPrinter.h"
 #include <future>
 #include <vector>
+#include <chrono>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+
+using namespace std::chrono_literals;
 
 #ifndef NDEBUG
 #define LOG_DEBUG printf /* cose */
@@ -13,19 +19,38 @@
 #define LOG_DEBUG
 #endif
 
+
+void timeout(){
+    int timeout=Configuration::getInstance().getTimeout();
+    int i=0;
+    while(!Configuration::getInstance().getStopThreadSolver()&&i<timeout){
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        i++;
+    }
+    if(i>=timeout)
+    {
+        Logger::logInfo("Timeout reached");
+        Logger::logOut("Timeout reached");
+        Configuration::getInstance().setStopThreadSolver(true);
+    }
+
+}
+
 void run(){
     PreElaborator preElab;
     for (const auto & entry : std::filesystem::directory_iterator(Configuration::getInstance().getInputFolderPath())){
         Logger::getInstance().newInstance(entry.path().filename());
         Logger::logInfo(entry.path().filename());
+        std::thread timeoutThread(&timeout);
         InputMatrix inputMatrix(entry.path());
         preElab.clean(inputMatrix);
         MBaseSolverV6 solver(inputMatrix.getColumnLength());
         auto results = solver.solve(inputMatrix);
 
-
         ResultPrinter printer;
         printer.printResults(results, inputMatrix);
+        Configuration::getInstance().setStopThreadSolver(true);
+        timeoutThread.join();
         Configuration::getInstance().setStopThreadSolver(false);
 
         if(Configuration::getInstance().getStopThreadInstances()){

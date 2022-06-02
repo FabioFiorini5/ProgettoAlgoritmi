@@ -8,7 +8,7 @@
 
 void PreElaborator::clean(InputMatrix &matrix) {
     auto optimization=Configuration::getInstance().getOptimization();
-    Logger::logDebug("Optimization level: "+std::to_string(optimization));
+    //Logger::logDebug("Optimization level: "+std::to_string(optimization));
     if(optimization==0)
         return;
     Logger::logOut("%time%");
@@ -86,7 +86,7 @@ void PreElaborator::print(bool* boolP, int len) const{
     for(int i=0; i<len; i++){
         line.append(std::to_string(boolP[i]));
     }
-    Logger::logDebug(line);
+    ////Logger::logDebug(line);
 }
 
 void PreElaborator::cleanDuplicates(InputMatrix &matrix) {
@@ -106,7 +106,7 @@ void PreElaborator::cleanDuplicates(InputMatrix &matrix) {
         for(const auto& val: matrix.getLabels()[i].copied){
             line.append(std::to_string(val.letter)+std::to_string(val.number)+(" |"));
         }
-        Logger::logDebug(line);
+        //Logger::logDebug(line);
         line.clear();
     }
 

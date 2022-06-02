@@ -115,7 +115,7 @@ std::vector<std::vector<InputMatrix::Label>> ResultPrinter::extractResults(std::
     }
     mhss.clear();
     clearCopied(vettoreFinale);
-    Logger::logDebug("Ended extraction, start sorting");
+    //Logger::logDebug("Ended extraction, start sorting");
     std::vector<InputMatrix::Label> toOrder(input.getColumnLengthOriginal());
     for(auto& vec:vettoreFinale) {
         for(const auto& lbl: vec){
@@ -133,7 +133,7 @@ std::vector<std::vector<InputMatrix::Label>> ResultPrinter::extractResults(std::
 
     quickSort(vettoreFinale, 0, vettoreFinale.size()-1);
 
-    Logger::logDebug("Ended sorting");
+    //Logger::logDebug("Ended sorting");
     return vettoreFinale;
 }
 
@@ -150,7 +150,7 @@ void ResultPrinter::calculateExpectedResults(std::vector<MBaseSolverV6::Mhs> &mh
         }
         tot+=mhsTot;
     }
-    Logger::logDebug("Numero di MHS: "+std::to_string(tot));
+    //Logger::logDebug("Numero di MHS: "+std::to_string(tot));
 }
 
 void ResultPrinter::clearCopied(std::vector<std::vector<InputMatrix::Label>>& mhss) {

@@ -68,7 +68,7 @@ InputMatrix::InputMatrix(const std::string& path) {
     Logger::logInfo("Loading file");
     std::ifstream infile(path);
     std::string line;
-    std::cout << path << std::endl;
+    //std::cout << path << std::endl;
     int row=0;
     int column=0;
     while (std::getline(infile, line))
@@ -104,7 +104,7 @@ InputMatrix::InputMatrix(const std::string& path) {
         }
         rowCount++;
     }
-    printJson(Logger::logDebug);
+    //printJson(//Logger::logDebug);
     Logger::logInfo("Loaded!");
 }
 
@@ -183,7 +183,7 @@ void InputMatrix::print(const std::function<void(const std::string&)>& printer) 
 }
 
 void InputMatrix::loadLabels(std::string& string) {
-    Logger::logDebug(string);
+    //Logger::logDebug(string);
     labels=new Label [columnLength]();
     std::string delimiter = " ";
     string.erase(0, 8);
@@ -220,7 +220,7 @@ void InputMatrix::loadLabels(std::string& string) {
         line.append(std::to_string(labels[j].index));
         line.append(", ");
     }
-    Logger::logDebug(line);
+    //Logger::logDebug(line);
 
 }
 

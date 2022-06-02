@@ -54,6 +54,13 @@ private:
         }
     }
 
+    void inline loadTimeout() {
+        auto it=properties.find("timeout");
+        if(it!=properties.end()){
+            timeout= std::stoi(it->second);
+        }
+    }
+
     Configuration() {// Constructor? (the {} brackets) are needed here.
         info=true;
         debug=false;
@@ -81,25 +88,11 @@ private:
     std::atomic_bool stop_thread_solver;
 
 public:
-    inline bool getStopThreadInstances() const {
-        return stop_thread_instances.load(std::memory_order_acquire);
-    }
-
-    inline bool getStopThreadSolver() const {
-        return stop_thread_solver.load(std::memory_order_acquire);
-    }
-    inline void setStopThreadInstances(const bool stopThreadInstances) {
-        stop_thread_instances.store(stopThreadInstances, std::memory_order_release);
-    }
-
-    inline void setStopThreadSolver(const bool stopThreadSolver) {
-        stop_thread_solver.store(stopThreadSolver, std::memory_order_release);
-    }
     // C++ 11
     // =======
     // We can use the better technique of deleting the methods
     // we don't want.
-public:
+
     Configuration(Configuration const&)               = delete;
     void operator=(Configuration const&)  = delete;
     // Note: Configurationcott Meyers mentions in his Effective Modern
@@ -123,6 +116,7 @@ public:
         loadLogLevels();
         loadPaths();
         loadOptimization();
+        loadTimeout();
     }
 
     [[nodiscard]] inline bool isInfo() const {
@@ -155,6 +149,26 @@ public:
 
     bool isExtractionEnabled() {
         return extraction;
+    }
+
+
+    inline bool getStopThreadInstances() const {
+        return stop_thread_instances.load(std::memory_order_acquire);
+    }
+
+    inline bool getStopThreadSolver() const {
+        return stop_thread_solver.load(std::memory_order_acquire);
+    }
+    inline void setStopThreadInstances(const bool stopThreadInstances) {
+        stop_thread_instances.store(stopThreadInstances, std::memory_order_release);
+    }
+
+    inline void setStopThreadSolver(const bool stopThreadSolver) {
+        stop_thread_solver.store(stopThreadSolver, std::memory_order_release);
+    }
+
+    int getTimeout() const {
+        return timeout;
     }
 
 };

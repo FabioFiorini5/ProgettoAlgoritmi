@@ -223,7 +223,7 @@ void MBaseSolverV6::printRepVector(const bool *pBoolean, int length) const {
         line.append((pBoolean[i]?"1":"0"));
         line.append("]");
     }
-    Logger::logDebug(line);
+    //Logger::logDebug(line);
 }
 
 
