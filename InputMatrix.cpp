@@ -305,3 +305,10 @@ int InputMatrix::getMax(const bool* element, int size) const {
     return max;
 }
 
+InputMatrix::~InputMatrix() {
+    for(int i=0; i<rowLength; i++){
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+}
+

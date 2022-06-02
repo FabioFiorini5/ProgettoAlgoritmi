@@ -32,8 +32,10 @@ public:
         return buffer;
     }
     inline void newLog(const std::string &basicString, std::ofstream& ofstream, const char *string) {
-        if(ofstream.is_open())
+        if(ofstream.is_open()){
+            ofstream.flush();
             ofstream.close();
+        }
         ofstream.open(Configuration::getInstance().getOutputFolderPath()+basicString+string);
     }
 

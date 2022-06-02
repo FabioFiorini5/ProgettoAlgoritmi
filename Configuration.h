@@ -77,6 +77,7 @@ private:
     bool extraction;
     bool batchMode;
     int timeout;
+    bool running;
 
     std::string inputInstance;
     std::string inputFolderPath;
@@ -167,8 +168,16 @@ public:
         stop_thread_solver.store(stopThreadSolver, std::memory_order_release);
     }
 
-    int getTimeout() const {
+    inline int getTimeout() const {
         return timeout;
+    }
+
+    inline bool isRunning() const {
+        return running;
+    }
+
+    inline void setRunning(bool isRunning) {
+        running= isRunning;
     }
 
 };

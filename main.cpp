@@ -4,12 +4,9 @@
 #include "Configuration.h"
 #include "Logger.h"
 #include "ResultPrinter.h"
-#include <future>
 #include <vector>
 #include <chrono>
 #include <thread>
-#include <mutex>
-#include <condition_variable>
 
 using namespace std::chrono_literals;
 
@@ -39,6 +36,8 @@ void timeout(){
 void run(){
     PreElaborator preElab;
     for (const auto & entry : std::filesystem::directory_iterator(Configuration::getInstance().getInputFolderPath())){
+        if(std::strcmp(".matrix", entry.path().extension().string().c_str())!=0)
+            continue;
         Logger::getInstance().newInstance(entry.path().filename());
         Logger::logInfo(entry.path().filename());
         std::thread timeoutThread(&timeout);
@@ -57,6 +56,7 @@ void run(){
             break;
         }
     }
+    Configuration::getInstance().setRunning(false);
 
 }
 
@@ -66,10 +66,12 @@ int main(int argc, char *argv[]) {
         Configuration::getInstance().load(argv[1]);
     Configuration::getInstance().setStopThreadInstances(false);
     Configuration::getInstance().setStopThreadSolver(false);
+
+    Configuration::getInstance().setRunning(true);
     std::thread executor(&run);
 
     int c=0;
-    while(c!=1){
+    while(Configuration::getInstance().isRunning()){
         std::cout<<"Premi 1 per terminare l'esecuzione, 2 per saltare l'istanza"<<std::endl;
 
         std::cin >> c;

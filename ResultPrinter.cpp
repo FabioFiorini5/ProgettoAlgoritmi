@@ -12,9 +12,6 @@ void ResultPrinter::printResults(std::vector<MBaseSolverV6::Mhs> &mhss, InputMat
     else{
         doCartesianMul(mhss, input);
     }
-
-
-
 }
 
 
@@ -168,6 +165,7 @@ ResultPrinter::getCartesianMul(std::vector<MBaseSolverV6::Mhs> &mhss, InputMatri
         auto labels=convertMhs(mhs, input);
         toReturn.push_back(labels);
     }
+    clearCopied(toReturn);
     mhss.clear();
 
     return toReturn;
@@ -210,7 +208,7 @@ void ResultPrinter::doCartesianMul(std::vector<MBaseSolverV6::Mhs> &mhss, InputM
     for(const auto& vec:finalVec){
         print(vec, input);
     }
-
+    finalVec.clear();
 }
 
 void ResultPrinter::print(const std::vector<InputMatrix::Label> &vector, InputMatrix &matrix) {

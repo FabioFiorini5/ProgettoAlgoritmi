@@ -45,21 +45,20 @@ std::vector<MBaseSolverV6::Mhs> MBaseSolverV6::solve(InputMatrix& input) {
             else
                 delete[] candidate;
         }
-        delete[] representativeVector;
-        delete[] current;
+        delete representativeVector;
+        delete current;
         queue.pop();
 
         if(Configuration::getInstance().getStopThreadInstances() || Configuration::getInstance().getStopThreadSolver()){
-            Logger::logError("Execution Interrupted");
-            Logger::logOut("Execution Interrupted");
+
             while(!queue.empty()){
-                auto current=queue.front();
-                delete[] current;
+                auto cur=queue.front();
+                delete cur;
                 queue.pop();
             }
+            Logger::logError("Execution Interrupted");
+            Logger::logOut("Execution Interrupted");
         }
-
-
     }
     Logger::logOut("Iterations: "+std::to_string(counter));
     Logger::logOut("\n");

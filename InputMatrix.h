@@ -26,6 +26,8 @@ public:
 
     explicit InputMatrix(const std::string& path);
 
+    virtual ~InputMatrix();
+
     [[nodiscard]] int getColumnLength() const;
 
     InputMatrix();
