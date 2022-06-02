@@ -20,7 +20,7 @@ using namespace std::chrono_literals;
 void timeout(){
     int timeout=Configuration::getInstance().getTimeout();
     int i=0;
-    while(!Configuration::getInstance().getStopThreadSolver()&&i<timeout){
+    while(!Configuration::getInstance().getStopThreadSolver()&&i<timeout*10){
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
         i++;
     }
@@ -55,6 +55,8 @@ void run(){
         if(Configuration::getInstance().getStopThreadInstances()){
             break;
         }
+
+
     }
     Configuration::getInstance().setRunning(false);
 
