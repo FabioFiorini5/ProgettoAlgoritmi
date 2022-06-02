@@ -77,6 +77,7 @@ int main(int argc, char *argv[]) {
         std::cin >> c;
         if (c == 1){
             Configuration::getInstance().setStopThreadInstances(true);
+            Configuration::getInstance().setRunning(false);
         }
         if(c == 2){
             Configuration::getInstance().setStopThreadSolver(true);
