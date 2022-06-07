@@ -63,7 +63,7 @@ std::vector<MBaseSolverV6::Mhs> MBaseSolverV6::solve(InputMatrix& input) {
     Logger::logOut("Iterations: "+std::to_string(counter));
     Logger::logOut("\n");
     Logger::logInfo("End solver");
-    printCsv();
+
     return mhss;
 
 }
