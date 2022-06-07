@@ -6,6 +6,7 @@
 #include "Logger.h"
 
 void ResultPrinter::printResults(std::vector<MBaseSolverV6::_mhs> mhss, InputMatrix& input) {
+    analyze(mhss, input);
     if(Configuration::getInstance().isExtractionEnabled()){
         doExtraction(mhss, input);
     }
@@ -134,7 +135,7 @@ std::vector<std::vector<InputMatrix::Label>> ResultPrinter::extractResults(std::
     return vettoreFinale;
 }
 
-void ResultPrinter::calculateExpectedResults(std::vector<MBaseSolverV6::Mhs> &mhss, InputMatrix &inputMatrix) {
+void ResultPrinter::calculateExpectedResults(const std::vector<MBaseSolverV6::Mhs> &mhss, InputMatrix &inputMatrix) {
     u_int64_t tot=0;
     u_int64_t mhsTot;
     for(const auto& mhs: mhss){
@@ -147,7 +148,7 @@ void ResultPrinter::calculateExpectedResults(std::vector<MBaseSolverV6::Mhs> &mh
         }
         tot+=mhsTot;
     }
-    //Logger::logDebug("Numero di MHS: "+std::to_string(tot));
+    Logger::logOutCsv(std::to_string(tot));
 }
 
 void ResultPrinter::clearCopied(std::vector<std::vector<InputMatrix::Label>>& mhss) {
@@ -228,4 +229,26 @@ void ResultPrinter::print(const std::vector<InputMatrix::Label> &vector, InputMa
     }
     mhs.append("}\n");
     Logger::logOut(mhs);
+}
+
+void ResultPrinter::analyze(const std::vector<MBaseSolverV6::_mhs>& vector1, InputMatrix &matrix) {
+    calculateExpectedResults(vector1, matrix);
+    int max=0;
+    int min=matrix.getRowLength();
+    for(const auto& mhs: vector1){
+        int count=0;
+        for(int i = 0; i<matrix.getColumnLength(); i++){
+            if(mhs.mhs[i])
+                count++;
+        }
+        if(count>max){
+            max=count;
+        }
+        if(count<min){
+            min=count;
+        }
+    }
+    Logger::getInstance().logOutCsv(std::to_string(min));
+    Logger::getInstance().logOutCsv(std::to_string(max));
+
 }

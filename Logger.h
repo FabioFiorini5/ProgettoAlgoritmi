@@ -161,18 +161,10 @@ public:
 
     inline void outCsv(const std::string& string){
         if(std::strcmp("%time%", string.c_str())==0){
-            outCsv("Current time: [ "+currentDateTime()+ " ],");
+            outCsv(currentDateTime());
             return;
         }
         writeCsv(string+",");
-        if(Configuration::getInstance().isOut()){
-            if(strcmp(string.c_str(), "\n")==0){
-                std::cout<<std::endl;
-            }
-            else{
-                std::cout<<string;
-            }
-        }
     }
 
     /**
@@ -211,7 +203,32 @@ public:
         getInstance().outCsv(string);
     }
 
+    inline static void newRowCsv(){
+        getInstance().writeCsv("\n");
+        getInstance().csvFileStream.flush();
+    }
 
+
+    void initCsvLog() {
+        csvFileStream.open(Configuration::getInstance().getOutputFolderPath()+"run."+currentDateTime()+".csv");
+        logOutCsv("Instance Name");
+        logOutCsv("Memory usage start");
+        logOutCsv("Rows");
+        logOutCsv("Columns");
+        logOutCsv("Pre-Elab Start Time");
+        logOutCsv("Pre-Elab End Time");
+        logOutCsv("Post-Elab Rows");
+        logOutCsv("Post-Elab Columns");
+        logOutCsv("MBase Start Time");
+        logOutCsv("MBase Number of Iteration");
+        logOutCsv("MBase End Time");
+        logOutCsv("MHS Size");
+        logOutCsv("Min MHS#");
+        logOutCsv("Max MHS#");
+        logOutCsv("Memory usage end");
+        logOutCsv("Interrupted");
+        newRowCsv();
+    }
 };
 
 

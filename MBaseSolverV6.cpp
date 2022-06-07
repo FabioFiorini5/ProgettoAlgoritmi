@@ -61,6 +61,8 @@ std::vector<MBaseSolverV6::Mhs> MBaseSolverV6::solve(InputMatrix& input) {
         }
     }
     Logger::logOut("Iterations: "+std::to_string(counter));
+
+    Logger::logOutCsv(std::to_string(counter));
     Logger::logOut("\n");
     Logger::logInfo("End solver");
 
@@ -248,19 +250,6 @@ std::vector<InputMatrix::Label> MBaseSolverV6::getLabels(bool *pBoolean, InputMa
     return labels;
 }
 
-void MBaseSolverV6::printCsv(){
-    //tempo mbase
-    //Logger::logOutCsv();
-    //tempo preelaborazione
-    //tempo dopo pre elaborazione
-    //dimensioni di m e n
-    //dimensioni di m e n post preelaborazione
-    //numero di righe soppresse
-    //numero di colonne soppresse
-    //cardinalità minima mhs
-    //cardinalità massima mhs
-    //spazio totale necessario
-}
 
 
 

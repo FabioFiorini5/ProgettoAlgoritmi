@@ -314,3 +314,8 @@ InputMatrix::~InputMatrix() {
     delete[] labels;
 }
 
+void InputMatrix::print() const {
+    Logger::logOutCsv(std::to_string(rowLength));
+    Logger::logOutCsv(std::to_string(columnLength));
+}
+

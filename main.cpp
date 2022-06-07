@@ -7,6 +7,7 @@
 #include <vector>
 #include <chrono>
 #include <thread>
+#include "Memory.h"
 
 using namespace std::chrono_literals;
 
@@ -33,18 +34,32 @@ void timeout(){
 
 }
 
+
+
 void run(){
+    Logger::getInstance().initCsvLog();
     PreElaborator preElab;
     for (const auto & entry : std::filesystem::directory_iterator(Configuration::getInstance().getInputFolderPath())){
         if(std::strcmp(".matrix", entry.path().extension().string().c_str())!=0)
             continue;
         Logger::getInstance().newInstance(entry.path().filename());
         Logger::logInfo(entry.path().filename());
+        Logger::logOutCsv(entry.path().filename());
+        Logger::logOutCsv(Memory::getMemoryUsage());
+
         std::thread timeoutThread(&timeout);
         InputMatrix inputMatrix(entry.path());
+        inputMatrix.print();
+        Logger::logOutCsv("%time%");
         preElab.clean(inputMatrix);
+        Logger::logOutCsv("%time%");
+
+        inputMatrix.print();
+
         MBaseSolverV6 solver(inputMatrix.getColumnLength());
+        Logger::logOutCsv("%time%");
         auto results = solver.solve(inputMatrix);
+        Logger::logOutCsv("%time%");
 
         ResultPrinter printer;
         printer.printResults(results, inputMatrix);
@@ -52,10 +67,12 @@ void run(){
         timeoutThread.join();
         Configuration::getInstance().setStopThreadSolver(false);
 
+        Logger::logOutCsv(Memory::getMemoryUsage());
+        Logger::logOutCsv(std::to_string(Configuration::getInstance().getStopThreadInstances()));
+        Logger::newRowCsv();
         if(Configuration::getInstance().getStopThreadInstances()){
             break;
         }
-
 
     }
     Configuration::getInstance().setRunning(false);
@@ -86,23 +103,6 @@ int main(int argc, char *argv[]) {
         }
     }
     executor.join();
-    /*
-    else{
-            clock_t startTime = clock();
-            InputMatrix inputMatrix(argv[1]);
-            preElab.clean(inputMatrix);
-            inputMatrix.print([](const std::string& x) -> void { Logger::getInstance().info(x);});
-            MBaseSolverV6 solver(inputMatrix.getColumnLength());
-            auto results=solver.solve(inputMatrix);
-            ResultPrinter printer;
-            printer.printResults(results, inputMatrix);
-            clock_t endTime = clock();
 
-            clock_t clockTicksTaken = endTime - startTime;
-            double timeInSeconds = clockTicksTaken / (double) CLOCKS_PER_SEC;
-            std::cout<<"Elapsed time: "<<timeInSeconds<<std::endl;
-        }
-
-*/
     return 0;
 }

@@ -48,6 +48,8 @@ public:
 
     void print(const std::function<void(const std::string&)>& printer) const;
 
+    void print() const;
+
     void joinColumn(int source, int copy);
 
     [[nodiscard]] int getColumnLengthOriginal() const;

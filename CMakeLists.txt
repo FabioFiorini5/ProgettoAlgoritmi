@@ -26,4 +26,8 @@ add_executable(alg_str_dati main.cpp
         MBaseSolverV6.h
         PreElaborator.cpp
         PreElaborator.h
-        Logger.h Configuration.h ResultPrinter.cpp ResultPrinter.h Utility.h)
+        Logger.h
+        Configuration.h
+        ResultPrinter.cpp
+        ResultPrinter.h
+        Utility.h Memory.h)
