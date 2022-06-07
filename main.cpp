@@ -11,12 +11,6 @@
 
 using namespace std::chrono_literals;
 
-#ifndef NDEBUG
-#define LOG_DEBUG printf /* cose */
-#else
-#define LOG_DEBUG
-#endif
-
 
 void timeout(){
     int timeout=Configuration::getInstance().getTimeout();

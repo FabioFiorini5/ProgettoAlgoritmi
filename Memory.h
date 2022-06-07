@@ -6,7 +6,10 @@
 #define ALG_STR_DATI_MEMORY_H
 
 
-static inline std::string getMemoryUsage(){
-    return "";
-}
+class Memory {
+public:
+    static inline std::string getMemoryUsage() {
+        return "";
+    }
+};
 #endif //ALG_STR_DATI_MEMORY_H
