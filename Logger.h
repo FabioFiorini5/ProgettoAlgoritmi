@@ -50,17 +50,25 @@ public:
             outputFileStream.write(basicString.c_str(), basicString.length());
     }
 
+    inline void writeCsv(const std::string &basicString){
+        if(csvFileStream.is_open())
+            csvFileStream.write(basicString.c_str(), basicString.length());
+    }
+
     Logger() {}                    // Constructor? (the {} brackets) are needed here.
 
         std::ofstream outputFileStream;
+        std::ofstream csvFileStream;
         std::ofstream logFileStream;
 
 public:
     virtual ~Logger() {
-        if(outputFileStream.is_open())
+        if(outputFileStream.is_open() || csvFileStream.is_open() )
             this->logFileStream.close();
-        if(outputFileStream.is_open())
+        if(logFileStream.is_open() || csvFileStream.is_open() ) //???
             this->outputFileStream.close();
+        if(outputFileStream.is_open() || logFileStream.is_open())
+            this->csvFileStream.close();
     }
 
 
@@ -150,6 +158,23 @@ public:
             }
         }
     }
+
+    inline void outCsv(const std::string& string){
+        if(std::strcmp("%time%", string.c_str())==0){
+            outCsv("Current time: [ "+currentDateTime()+ " ],");
+            return;
+        }
+        writeCsv(string+",");
+        if(Configuration::getInstance().isOut()){
+            if(strcmp(string.c_str(), "\n")==0){
+                std::cout<<std::endl;
+            }
+            else{
+                std::cout<<string;
+            }
+        }
+    }
+
     /**
      * Used to print informations if the channel is enabled
      * @param string
@@ -180,6 +205,10 @@ public:
      */
     inline static void logOut(const std::string& string){
         getInstance().out(string);
+    }
+
+    inline static void logOutCsv(const std::string& string){
+        getInstance().outCsv(string);
     }
 
 

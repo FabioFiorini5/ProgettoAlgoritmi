@@ -5,7 +5,7 @@
 #include "ResultPrinter.h"
 #include "Logger.h"
 
-void ResultPrinter::printResults(std::vector<MBaseSolverV6::Mhs> &mhss, InputMatrix& input) {
+void ResultPrinter::printResults(std::vector<MBaseSolverV6::_mhs> mhss, InputMatrix& input) {
     if(Configuration::getInstance().isExtractionEnabled()){
         doExtraction(mhss, input);
     }

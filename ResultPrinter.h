@@ -13,7 +13,7 @@ class ResultPrinter {
 
 
 public:
-    void printResults(std::vector<MBaseSolverV6::Mhs>& mhss, InputMatrix& input);
+    void printResults(std::vector<MBaseSolverV6::_mhs> mhss, InputMatrix& input);
 
     int partition(std::vector<std::vector<InputMatrix::Label>> &vettoreFinale, int start, int end);
 

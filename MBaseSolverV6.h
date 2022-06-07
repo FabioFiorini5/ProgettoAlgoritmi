@@ -77,5 +77,6 @@ private:
     std::vector<InputMatrix::Label> getLabels(bool *pBoolean, InputMatrix& inputMatrix);
 
 
+    void printCsv();
 };
 #endif //ALQWARITZMI_MBaseSolverV6_H
