@@ -57,13 +57,14 @@ void run(){
 
         ResultPrinter printer;
         printer.printResults(results, inputMatrix);
+
+        Logger::logOutCsv(Memory::getMemoryUsage());
+        Logger::logOutCsv(std::to_string(Configuration::getInstance().getStopThreadSolver()));
+        Logger::newRowCsv();
+
         Configuration::getInstance().setStopThreadSolver(true);
         timeoutThread.join();
         Configuration::getInstance().setStopThreadSolver(false);
-
-        Logger::logOutCsv(Memory::getMemoryUsage());
-        Logger::logOutCsv(std::to_string(Configuration::getInstance().getStopThreadInstances()));
-        Logger::newRowCsv();
         if(Configuration::getInstance().getStopThreadInstances()){
             break;
         }
