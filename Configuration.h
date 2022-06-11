@@ -52,9 +52,9 @@ private:
         if(it!=properties.end()){
             optimization= std::stoi(it->second);
         }
-        it=properties.find("extraction");
-        if(it!=properties.end()){
-            optimization= "true"==it->second;
+        auto it2=properties.find("extraction");
+        if(it2!=properties.end()){
+            extraction= "true"==it2->second;
         }
     }
 
