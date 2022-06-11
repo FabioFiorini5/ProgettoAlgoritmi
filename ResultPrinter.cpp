@@ -193,8 +193,10 @@ void ResultPrinter::doExtraction(std::vector<MBaseSolverV6::Mhs> &mhss, InputMat
         Logger::logOut("{");
         for(unsigned long i=0; i<vec.size(); i++)
         {
-
-            Logger::logOut(std::to_string(vec[i].index) + "(" + std::to_string(vec[i].letter) +std::to_string(vec[i].number)+")"+((i<vec.size()-1)?", ":""));
+            Logger::logOut(vec[i].toString());
+            if(i<vec.size()-1)
+                Logger::logOut(", ");
+            //Logger::logOut(std::to_string(vec[i].index) + "(" + std::to_string(vec[i].letter) +std::to_string(vec[i].number)+")"+((i<vec.size()-1)?", ":""));
         }
         Logger::logOut("}");
         Logger::logOut("\n");

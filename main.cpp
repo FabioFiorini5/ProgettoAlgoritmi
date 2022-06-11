@@ -4,7 +4,6 @@
 #include "Configuration.h"
 #include "Logger.h"
 #include "ResultPrinter.h"
-#include <vector>
 #include <chrono>
 #include <thread>
 #include "Memory.h"
@@ -90,6 +89,7 @@ int main(int argc, char *argv[]) {
 
         std::cin >> c;
         if (c == 1){
+            Configuration::getInstance().setStopThreadSolver(true);
             Configuration::getInstance().setStopThreadInstances(true);
             Configuration::getInstance().setRunning(false);
         }
