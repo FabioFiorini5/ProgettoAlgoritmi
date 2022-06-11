@@ -39,7 +39,7 @@ public:
 
     void doCartesianMul(std::vector<MBaseSolverV6::Mhs> &mhss, InputMatrix &input);
 
-    void print(const std::vector<InputMatrix::Label> &vector, InputMatrix &matrix);
+    void print(const std::vector<InputMatrix::Label> &vector);
 
     void analyze(const std::vector<MBaseSolverV6::_mhs>& vector1, InputMatrix &matrix);
 };

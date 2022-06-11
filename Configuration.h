@@ -52,6 +52,10 @@ private:
         if(it!=properties.end()){
             optimization= std::stoi(it->second);
         }
+        it=properties.find("extraction");
+        if(it!=properties.end()){
+            optimization= "true"==it->second;
+        }
     }
 
     void inline loadTimeout() {
@@ -148,7 +152,7 @@ public:
         return optimization;
     }
 
-    bool isExtractionEnabled() {
+    inline bool isExtractionEnabled() {
         return extraction;
     }
 
