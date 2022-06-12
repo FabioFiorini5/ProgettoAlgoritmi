@@ -4,6 +4,7 @@
 
 #include "ResultPrinter.h"
 #include "Logger.h"
+#include "MhsSort.h"
 
 void ResultPrinter::printResults(std::vector<MBaseSolverV6::_mhs> mhss, InputMatrix& input) {
     analyze(mhss, input);
@@ -16,61 +17,6 @@ void ResultPrinter::printResults(std::vector<MBaseSolverV6::_mhs> mhss, InputMat
 
 }
 
-
-int ResultPrinter::partition(std::vector<std::vector<InputMatrix::Label>> &vettoreFinale, int start, int end){
-
-    auto pivot = vettoreFinale[start];
-
-    int count = 0;
-    for (int i = start + 1; i <= end; i++) {
-        if (!compareMhs(pivot, vettoreFinale[i]))
-            count++;
-    }
-
-    // Giving pivot element its correct position
-    int pivotIndex = start + count;
-    std::swap(vettoreFinale[pivotIndex], vettoreFinale[start]);
-
-    // Sorting left and right parts of the pivot element
-    int i = start, j = end;
-
-    while (i < pivotIndex && j > pivotIndex) {
-        //se è uguale devo guardare il secondo elemento
-        while (compareMhs(vettoreFinale[i],vettoreFinale[pivotIndex])) {
-            i++;
-        }
-
-        while (compareMhs(vettoreFinale[pivotIndex], vettoreFinale[j])) {
-            j--;
-        }
-
-        if (i < pivotIndex && j > pivotIndex) {
-            std::swap(vettoreFinale[i++], vettoreFinale[j--]);
-        }
-    }
-
-    return pivotIndex;
-}
-
-bool ResultPrinter::compareMhs(std::vector<InputMatrix::Label> &a, std::vector<InputMatrix::Label> &b) {
-    if(a.size()<b.size()) return true;
-    if(a.size()>b.size())  return false;
-    for(unsigned long i=0; i<a.size(); i++){
-        if(a[i].index<b[i].index) return true;
-        if(a[i].index>b[i].index)  return false;
-    }
-    return false;
-}
-
-void ResultPrinter::quickSort(std::vector<std::vector<InputMatrix::Label>>& vettoreFinale, int start, int end){
-    if (start >= end)
-        return;
-
-    int p = partition(vettoreFinale, start, end);
-    quickSort(vettoreFinale, start, p - 1);
-
-    quickSort(vettoreFinale, p + 1, end);
-}
 
 void ResultPrinter::extractMhs(bool* mhs, int pos_attuale, std::vector<std::vector<InputMatrix::Label>>& vettoreFinale, std::vector<InputMatrix::Label>& vettoreParziale, InputMatrix& inputMatrix) {
     if (pos_attuale > getMax(mhs, inputMatrix.getColumnLength())||pos_attuale==inputMatrix.getColumnLength()-1){
@@ -114,25 +60,10 @@ std::vector<std::vector<InputMatrix::Label>> ResultPrinter::extractResults(std::
     }
     mhss.clear();
     clearCopied(vettoreFinale);
-    //Logger::logDebug("Ended extraction, start sorting");
-    std::vector<InputMatrix::Label> toOrder(input.getColumnLengthOriginal());
-    for(auto& vec:vettoreFinale) {
-        for(const auto& lbl: vec){
-            toOrder[lbl.index-1]=lbl;
-        }
-        vec.clear();
-        for(auto& lbl: toOrder){
-            if(lbl.index!=0){
-                vec.push_back(lbl);
-                lbl.index=0;
-            }
-        }
-    }
+    Logger::logInfo("Ended extraction, start sorting");
+    sort(vettoreFinale, input);
 
-
-    quickSort(vettoreFinale, 0, vettoreFinale.size()-1);
-
-    //Logger::logDebug("Ended sorting");
+    Logger::logInfo("Ended sorting");
     return vettoreFinale;
 }
 
