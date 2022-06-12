@@ -136,14 +136,15 @@ static void countingSortOnIndex(std::vector<std::vector<InputMatrix::Label>> &ve
         counter[i]+=counter[i-1];
     }
     for(int i=start; i<=anEnd; i++){
-        copyArr[i]=vector[i];
+        std::swap(copyArr[i], vector[i]);
+        //copyArr[i]=vector[i];
     }
     for(int i=anEnd; i>=start; i--){
         /*auto el=copyArr[i];
         auto value=el[index].index;
         auto position= --counter[value];
         vector[position]=el;*/
-        vector[--counter[copyArr[i][index].index]]=copyArr[i];
+        std::swap(vector[--counter[copyArr[i][index].index]],copyArr[i]);
     }
 }
 
